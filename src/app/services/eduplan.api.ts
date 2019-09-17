@@ -1,0 +1,1 @@
+export const EDUPLAN_API: string = 'http://localhost:9090';

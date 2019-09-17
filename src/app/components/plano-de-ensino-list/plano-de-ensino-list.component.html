@@ -1,0 +1,62 @@
+<div [ngClass]="classCss" role="alert" *ngIf="message">
+    <strong>{{ message.text }}</strong>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Lista de Planos de Ensino</h3>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="inputDisciplina" class="col-sm-1 control-label">Disciplina: </label>
+                    <div class="col-sm-4">
+                        <input type="text" [(ngModel)]="planoDeEnsinoFilter.disciplina" name="disciplina" class="form-control"
+                            id="inputDisciplina">
+                    </div>
+                    <button class="btn btn-danger pull-left" (click)="cleanFilter()">Limpar Filtro</button>
+                    <button style="margin-left: 10px" class="btn btn-info pull-left" (click)="filter()">Filtrar</button>
+                </div>
+            </div>
+            <div class="box-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th *ngIf="shared.user.profile == 'DIRETOR'">Docente</th>
+                        <th>Disciplina</th>
+                        <th>Periodo</th>
+                        <th>Ano/Semestre</th>
+                        <th style="width: 10px">&nbsp;</th>
+                        <th style="width: 10px">&nbsp;</th>
+                        <th style="width: 10px">&nbsp;</th>
+                        <!---  <th style="width: 10px">&nbsp;</th>-->
+                    </tr>
+                    <tr *ngFor="let pe of listPlanoDeEnsino">
+                        <td *ngIf="shared.user.profile == 'DIRETOR'">
+                            {{pe.user.nome}}
+                        </td>
+                        <td>{{pe.disciplina}}</td>
+                        <td>{{pe.periodo}}</td>
+                        <td>{{pe.ano}}/{{pe.semestre}}</td>
+                        <!---td><button class="btn btn-secondary">Imprimir</button></td>-->
+                        <td>
+                            <button class="btn btn-primary" (click)="edit(pe.id)">Editar</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" (click)="delete(pe.id, pe.disciplina)">Apagar</button>
+                        </td>
+                        <td><button class="btn btn-success" (click)="detail(pe.id)">Detalhes</button></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="box-footer clearfix">
+                <ul class="pagination pagination-sm no-margin pull-right">
+                    <li><a href="" (click)="setPreviousPage($event)">&laquo;</a></li>
+                    <li *ngFor="let p of pages; let i=index">
+                        <a [ngClass]="{'pagination-focus':i==page}" href="" (click)="setPage(i,$event)">{{i+1}}</a>
+                    </li>
+                    <li><a href="" (click)="setNextPage($event)">&raquo;</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
