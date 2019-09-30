@@ -20,6 +20,7 @@ export class UserNewComponent implements OnInit {
   shared: SharedService;
   message: {};
   classCss: {};
+  id: string = this.route.snapshot.params['id'];
 
   constructor(
     private userService: UserService,
@@ -28,9 +29,9 @@ export class UserNewComponent implements OnInit {
   }
 
   ngOnInit() {
-    let id: string = this.route.snapshot.params['id'];
-    if (id != undefined) {
-      this.findById(id);
+    // let id: string = this.route.snapshot.params['id'];
+    if (this.id != undefined) {
+      this.findById(this.id);
     }
   }
 

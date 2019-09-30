@@ -25,7 +25,6 @@ export class PlanoDeEnsinoNewComponent implements OnInit {
 
   constructor(
     private planoDeEnsinoService: PlanoDeEnsinoService,
-    private userService: UserService,
     private route: ActivatedRoute) {
     this.shared = SharedService.getInstance();
   }
