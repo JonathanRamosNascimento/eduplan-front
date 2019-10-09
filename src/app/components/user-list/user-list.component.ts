@@ -14,7 +14,7 @@ import { DialogService } from '../../dialog.service';
 export class UserListComponent implements OnInit {
 
   page:number=0;
-  count:number=5;
+  count:number = 12;
   pages:Array<number>;
   shared : SharedService;
   message : {};

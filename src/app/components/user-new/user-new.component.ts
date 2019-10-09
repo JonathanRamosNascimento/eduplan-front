@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ResponseApi } from './../../model/response-api';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from './../../services/user/user.service';
@@ -24,7 +25,9 @@ export class UserNewComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.shared = SharedService.getInstance();
   }
 
@@ -53,10 +56,7 @@ export class UserNewComponent implements OnInit {
       this.user = new User(null, '', '', '', '', '');
       let userRet: User = responseApi.data;
       this.form.resetForm();
-      this.showMessage({
-        type: 'success',
-        text: `Usuario ${userRet.nome} salvo com sucesso!`
-      });
+      this.router.navigate(['/user-list']);
     }, err => {
       this.showMessage({
         type: 'error',
