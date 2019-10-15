@@ -21,7 +21,7 @@ export class PlanoDeEnsinoListComponent implements OnInit {
   message: {};
   classCss: {};
   listPlanoDeEnsino = [];
-  planoDeEnsinoFilter = new PlanoDeEnsino('', 0, null, null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+  planoDeEnsinoFilter = new PlanoDeEnsino();
 
   constructor(
     private dialogService: DialogService,
@@ -67,7 +67,7 @@ export class PlanoDeEnsinoListComponent implements OnInit {
     this.assignedToMe = false;
     this.page = 0;
     this.count = 5;
-    this.planoDeEnsinoFilter = new PlanoDeEnsino('', 0, null, null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+    this.planoDeEnsinoFilter = new PlanoDeEnsino();
     this.findAll(this.page, this.count);
   }
 

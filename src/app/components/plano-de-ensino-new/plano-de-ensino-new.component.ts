@@ -19,7 +19,7 @@ export class PlanoDeEnsinoNewComponent implements OnInit {
   @ViewChild("form")
   form: NgForm;
 
-  planoDeEnsino = new PlanoDeEnsino('', 0, null, null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+  planoDeEnsino = new PlanoDeEnsino();
   shared: SharedService;
   message: {};
   classCss: {};
@@ -53,7 +53,7 @@ export class PlanoDeEnsinoNewComponent implements OnInit {
   register() {
     this.message = {};
     this.planoDeEnsinoService.createOrUpdate(this.planoDeEnsino).subscribe((responseApi: ResponseApi) => {
-      this.planoDeEnsino = new PlanoDeEnsino('', 0, null, null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+      this.planoDeEnsino = new PlanoDeEnsino();
       let plnaoDeEnsino: PlanoDeEnsino = responseApi.data;
       this.form.resetForm();
       this.router.navigate(['/plano-de-ensino-list']);
