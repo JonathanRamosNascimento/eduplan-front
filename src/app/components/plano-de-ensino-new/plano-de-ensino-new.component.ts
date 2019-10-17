@@ -7,6 +7,7 @@ import { SharedService } from '../../services/shared.service';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PlanoDeEnsino } from '../../model/plano-de-ensino';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ticket-new',
@@ -18,14 +19,16 @@ export class PlanoDeEnsinoNewComponent implements OnInit {
   @ViewChild("form")
   form: NgForm;
 
-  planoDeEnsino = new PlanoDeEnsino('', 0,  null, null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+  planoDeEnsino = new PlanoDeEnsino();
   shared: SharedService;
   message: {};
   classCss: {};
 
   constructor(
     private planoDeEnsinoService: PlanoDeEnsinoService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.shared = SharedService.getInstance();
   }
 
@@ -50,13 +53,10 @@ export class PlanoDeEnsinoNewComponent implements OnInit {
   register() {
     this.message = {};
     this.planoDeEnsinoService.createOrUpdate(this.planoDeEnsino).subscribe((responseApi: ResponseApi) => {
-      this.planoDeEnsino = new PlanoDeEnsino('', 0,  null, null, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+      this.planoDeEnsino = new PlanoDeEnsino();
       let plnaoDeEnsino: PlanoDeEnsino = responseApi.data;
       this.form.resetForm();
-      this.showMessage({
-        type: 'success',
-        text: `Registered ${plnaoDeEnsino.disciplina} successfully`
-      });
+      this.router.navigate(['/plano-de-ensino-list']);
     }, err => {
       this.showMessage({
         type: 'error',
