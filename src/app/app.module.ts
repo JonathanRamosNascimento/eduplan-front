@@ -22,6 +22,9 @@ import { UserNewComponent } from './components/user-new/user-new.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { AuthInterceptor } from './components/security/auth.interceptor';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { DisciplinaNewComponent } from './components/disciplina-new/disciplina-new.component';
+import { DisciplinaListComponent } from './components/disciplina-list/disciplina-list.component';
+import { DisciplinaDetailComponent } from './components/disciplina-detail/disciplina-detail.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     PlanoDeEnsinoNewComponent,
     PlanoDeEnsinoListComponent,
     PlanoDeEnsinoDetailComponent,
+    DisciplinaNewComponent,
+    DisciplinaListComponent,
+    DisciplinaDetailComponent,
   ],
   imports: [
     BrowserModule,
