@@ -8,14 +8,26 @@
         <strong>{{ message.text }}</strong>
       </div>
       <div class="box-body">
+
         <div [ngClass]="getFormGroupClass(disciplina.invalid,disciplina.dirty)">
+          <label for="inputDisciplina" class="col-sm-2 control-label">Disciplina</label>
+          <div class="col-sm-10">
+            <select [ngModel]="planoDeEnsino.disciplina" name="disciplina" id="inputDisciplina" class="form-control"
+              #disciplina="ngModel">
+              <option *ngFor="let li of listDisciplina" [ngValue]="li.nome">{{li.nome}}</option>
+            </select>
+            <span class="help-block" *ngIf="disciplina.invalid && disciplina.dirty">Disciplina é obrigatório</span>
+          </div>
+        </div>
+
+        <!-- <div [ngClass]="getFormGroupClass(disciplina.invalid,disciplina.dirty)">
           <label for="inputDisciplina" class="col-sm-2 control-label">Disciplina</label>
           <div class="col-sm-10">
             <input type="text" [(ngModel)]="planoDeEnsino.disciplina" name="disciplina" class="form-control"
               id="inputDisciplina" placeholder="Disciplina" #disciplina="ngModel" required>
             <span class="help-block" *ngIf="disciplina.invalid && disciplina.dirty">Disciplina é obrigatório</span>
           </div>
-        </div>
+        </div> -->
 
         <div [ngClass]="getFormGroupClass(turno.invalid,turno.dirty)">
           <label for="inputTurno" class="col-sm-2 control-label">Turno</label>

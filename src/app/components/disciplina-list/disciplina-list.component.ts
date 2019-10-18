@@ -20,7 +20,6 @@ export class DisciplinaListComponent implements OnInit {
   message: {};
   classCss: {};
   listDisciplina = [];
-  disciplinaFilter = new Disciplina();
 
   constructor(
     private dialogService: DialogService,

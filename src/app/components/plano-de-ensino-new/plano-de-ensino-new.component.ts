@@ -1,7 +1,8 @@
+import { ResponseApi } from './../../model/response-api';
+import { DisciplinaService } from './../../services/disciplina/disciplina.service';
 import { UserService } from './../../services/user/user.service';
 import { User } from './../../model/user';
 import { PlanoDeEnsinoService } from './../../services/plano-de-ensino/plano-de-ensino.service';
-import { ResponseApi } from '../../model/response-api';
 import { ActivatedRoute } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
 import { NgForm } from '@angular/forms';
@@ -23,11 +24,13 @@ export class PlanoDeEnsinoNewComponent implements OnInit {
   shared: SharedService;
   message: {};
   classCss: {};
+  listDisciplina = [];
 
   constructor(
     private planoDeEnsinoService: PlanoDeEnsinoService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private disciplinaService: DisciplinaService
   ) {
     this.shared = SharedService.getInstance();
   }
@@ -37,6 +40,7 @@ export class PlanoDeEnsinoNewComponent implements OnInit {
     if (id != undefined) {
       this.findById(id);
     }
+    this.findAllDisciplinas();
   }
 
   findById(id: string) {
@@ -86,5 +90,16 @@ export class PlanoDeEnsinoNewComponent implements OnInit {
       'alert': true
     }
     this.classCss['alert-' + type] = true;
+  }
+
+  findAllDisciplinas() {
+    this.disciplinaService.findAll(0, 10).subscribe((responseApi: ResponseApi) => {
+      this.listDisciplina = responseApi['data']['content'];
+    }, err => {
+      this.showMessage({
+        type: 'error',
+        text: err['error']['errors'][0]
+      });
+    });
   }
 }
