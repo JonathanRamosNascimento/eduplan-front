@@ -1,3 +1,40 @@
-<p>
-  disciplina-detail works!
-</p>
+<div class="col-md-12" style="margin-left: 0%;">
+  <div class="box box-info">
+    <div class="box-header with-border">
+      <h3 class="box-title">Detalhes da Disciplina</h3>
+    </div>
+    <form class="form-horizontal" #form="ngForm" (ngSubmit)="register()" novalidate>
+      <div [ngClass]="classCss" role="alert" *ngIf="message">
+        <strong>{{ message.text }}</strong>
+      </div>
+
+      <div class="box-body">
+        <ul class="list-group list-group-unbordered">
+          <li class="list-group-item">
+            <b>Nome: </b> <span>{{disciplina.nome}}</span>
+          </li>
+
+          <li class="list-group-item">
+            <b>Observações: </b> <span>{{disciplina.observacoes}}</span>
+          </li>
+
+          <li class="list-group-item">
+            <b>Bibliografia basica: </b> <span>{{disciplina.biblioBasica}}</span>
+          </li>
+
+          <li class="list-group-item">
+            <b>Bibliografia complementar: </b> <span>{{disciplina.biblioComplementar}}</span>
+          </li>
+
+        </ul>
+
+
+        <button [routerLink]="['/disciplina-list']" routerLinkActive="router-link-active"
+          class="btn btn-info pull-left">Voltar</button>
+        <button [routerLink]="['/disciplina-new/', disciplina.id]" routerLinkActive="router-link-active"
+          class="btn btn-secondary pull-right">Editar</button>
+      </div>
+
+    </form>
+  </div>
+</div>

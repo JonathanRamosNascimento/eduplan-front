@@ -11,8 +11,8 @@
         <div [ngClass]="getFormGroupClass(disciplina.invalid,disciplina.dirty)">
           <label for="inputDisciplina" class="col-sm-2 control-label">Disciplina</label>
           <div class="col-sm-10">
-            <input type="text" [(ngModel)]="planoDeEnsino.disciplina" name="disciplina" class="form-control" id="inputDisciplina"
-              placeholder="Disciplina" #disciplina="ngModel" required>
+            <input type="text" [(ngModel)]="planoDeEnsino.disciplina" name="disciplina" class="form-control"
+              id="inputDisciplina" placeholder="Disciplina" #disciplina="ngModel" required>
             <span class="help-block" *ngIf="disciplina.invalid && disciplina.dirty">Disciplina é obrigatório</span>
           </div>
         </div>
@@ -36,7 +36,8 @@
           <div class="col-sm-10">
             <input [(ngModel)]="planoDeEnsino.chteorica" name="chteorica" class="form-control" id="inputChTeorica"
               placeholder="Carga Horaria Teorica" #chteorica="ngModel" required>
-            <span class="help-block" *ngIf="chteorica.invalid && chteorica.dirty">Carga Horaria Teorica é obrigatória</span>
+            <span class="help-block" *ngIf="chteorica.invalid && chteorica.dirty">Carga Horaria Teorica é
+              obrigatória</span>
           </div>
         </div>
         <div [ngClass]="getFormGroupClass(chpratica.invalid,chpratica.dirty)">
@@ -44,7 +45,8 @@
           <div class="col-sm-10">
             <input [(ngModel)]="planoDeEnsino.chpratica" name="chpratica" class="form-control" id="inputChPratica"
               placeholder="Carga Horaria Pratica" #chpratica="ngModel" required>
-            <span class="help-block" *ngIf="chpratica.invalid && chpratica.dirty">Carga Horaria Pratica é obrigatória</span>
+            <span class="help-block" *ngIf="chpratica.invalid && chpratica.dirty">Carga Horaria Pratica é
+              obrigatória</span>
           </div>
         </div>
         <div [ngClass]="getFormGroupClass(chtotal.invalid,chtotal.dirty)">
@@ -92,8 +94,8 @@
         <div [ngClass]="getFormGroupClass(ano.invalid,ano.dirty)">
           <label for="inputAno" class="col-sm-2 control-label">Ano</label>
           <div class="col-sm-10">
-            <input [(ngModel)]="planoDeEnsino.ano" name="ano" class="form-control" id="inputAno" placeholder="Ano" #ano="ngModel"
-              required>
+            <input [(ngModel)]="planoDeEnsino.ano" name="ano" class="form-control" id="inputAno" placeholder="Ano"
+              #ano="ngModel" required>
             <span class="help-block" *ngIf="ano.invalid && ano.dirty">Ano é obrigatória</span>
           </div>
         </div>
@@ -123,8 +125,8 @@
         <div [ngClass]="getFormGroupClass(justificativa.invalid,justificativa.dirty)">
           <label for="inputJustificativa" class="col-sm-2 control-label">Justificativa</label>
           <div class="col-sm-10">
-            <textarea [(ngModel)]="planoDeEnsino.justificativa" rows="3" name="justificativa" class="form-control" id="inputJustificativa"
-              placeholder="Justificativa" #justificativa="ngModel" required>
+            <textarea [(ngModel)]="planoDeEnsino.justificativa" rows="3" name="justificativa" class="form-control"
+              id="inputJustificativa" placeholder="Justificativa" #justificativa="ngModel" required>
               <span class="help-block" *ngIf="justificativa.invalid && justificativa.dirty">Justificativa é obrigatória</span>
             </textarea>
           </div>
@@ -132,8 +134,8 @@
         <div [ngClass]="getFormGroupClass(objetivos.invalid,objetivos.dirty)">
           <label for="inputObjetivos" class="col-sm-2 control-label">Objetivos</label>
           <div class="col-sm-10">
-            <textarea [(ngModel)]="planoDeEnsino.objetivos" rows="5" name="objetivos" class="form-control" id="inputObjetivos"
-              placeholder="Objetivos" #objetivos="ngModel" required>
+            <textarea [(ngModel)]="planoDeEnsino.objetivos" rows="5" name="objetivos" class="form-control"
+              id="inputObjetivos" placeholder="Objetivos" #objetivos="ngModel" required>
             <span class="help-block" *ngIf="objetivos.invalid && objetivos.dirty">Objetivos é obrigatória</span>
           </textarea>
           </div>
@@ -141,9 +143,9 @@
         <div [ngClass]="getFormGroupClass(competenciaPreTextual.invalid,competenciaPreTextual.dirty)">
           <label for="inputCompetenciaPreTextual" class="col-sm-2 control-label">Competencia Pre-Textual</label>
           <div class="col-sm-10">
-            <textarea [(ngModel)]="planoDeEnsino.competenciaPreTextual" rows="2" name="competenciaPreTextual" class="form-control"
-              id="inputCompetenciaPreTextual" placeholder="Competencia Pre-Textual" #competenciaPreTextual="ngModel"
-              required>
+            <textarea [(ngModel)]="planoDeEnsino.competenciaPreTextual" rows="2" name="competenciaPreTextual"
+              class="form-control" id="inputCompetenciaPreTextual" placeholder="Competencia Pre-Textual"
+              #competenciaPreTextual="ngModel" required>
             <span class="help-block" *ngIf="competenciaPreTextual.invalid && competenciaPreTextual.dirty">Competencia
               Pre-Textual é obrigatória</span>
             </textarea>
@@ -152,8 +154,9 @@
         <div [ngClass]="getFormGroupClass(competenciaPessoal.invalid,competenciaPessoal.dirty)">
           <label for="inputCompetenciaPessoal" class="col-sm-2 control-label">Competencia Pessoal</label>
           <div class="col-sm-10">
-            <textarea [(ngModel)]="planoDeEnsino.competenciaPessoal" rows="3" name="competenciaPessoal" class="form-control"
-              id="inputCompetenciaPessoal" placeholder="Competencia Pessoal" #competenciaPessoal="ngModel" required>
+            <textarea [(ngModel)]="planoDeEnsino.competenciaPessoal" rows="3" name="competenciaPessoal"
+              class="form-control" id="inputCompetenciaPessoal" placeholder="Competencia Pessoal"
+              #competenciaPessoal="ngModel" required>
             <span class="help-block" *ngIf="competenciaPessoal.invalid && competenciaPessoal.dirty">Competencia Pessoal
               é obrigatória</span>
               </textarea>
@@ -162,9 +165,9 @@
         <div [ngClass]="getFormGroupClass(competenciaInterpessoal.invalid,competenciaInterpessoal.dirty)">
           <label for="inputCompetenciaInterpessoal" class="col-sm-2 control-label">Competencia Interpessoal</label>
           <div class="col-sm-10">
-            <textarea [(ngModel)]="planoDeEnsino.competenciaInterpessoal" rows="3" name="competenciaInterpessoal" class="form-control"
-              id="inputCompetenciaInterpessoal" placeholder="Competencia Interpessoal" #competenciaInterpessoal="ngModel"
-              required>
+            <textarea [(ngModel)]="planoDeEnsino.competenciaInterpessoal" rows="3" name="competenciaInterpessoal"
+              class="form-control" id="inputCompetenciaInterpessoal" placeholder="Competencia Interpessoal"
+              #competenciaInterpessoal="ngModel" required>
             <span class="help-block" *ngIf="competenciaInterpessoal.invalid && competenciaInterpessoal.dirty">Competencia
               Interpessoal é obrigatória</span>
               </textarea>
@@ -173,8 +176,8 @@
         <div [ngClass]="getFormGroupClass(competenciaTecnica.invalid,competenciaTecnica.dirty)">
           <label for="inputCompetenciaTecnica" class="col-sm-2 control-label">Competencia Tecnica</label>
           <div class="col-sm-10">
-            <input [(ngModel)]="planoDeEnsino.competenciaTecnica" name="competenciaTecnica" class="form-control" id="inputCompetenciaTecnica"
-              placeholder="Competencia Tecnica" #competenciaTecnica="ngModel" required>
+            <input [(ngModel)]="planoDeEnsino.competenciaTecnica" name="competenciaTecnica" class="form-control"
+              id="inputCompetenciaTecnica" placeholder="Competencia Tecnica" #competenciaTecnica="ngModel" required>
             <span class="help-block" *ngIf="competenciaTecnica.invalid && competenciaTecnica.dirty">Competencia Tecnica
               é obrigatória</span>
           </div>
@@ -192,8 +195,8 @@
         <div [ngClass]="getFormGroupClass(interPreTextual.invalid,interPreTextual.dirty)">
           <label for="inputInterPreTextual" class="col-sm-2 control-label">Inter Pre Textual</label>
           <div class="col-sm-10">
-            <input [(ngModel)]="planoDeEnsino.interPreTextual" name="interPreTextual" class="form-control" id="inputInterPreTextual"
-              placeholder="Inter Pre Textual" #interPreTextual="ngModel" required>
+            <input [(ngModel)]="planoDeEnsino.interPreTextual" name="interPreTextual" class="form-control"
+              id="inputInterPreTextual" placeholder="Inter Pre Textual" #interPreTextual="ngModel" required>
             <span class="help-block" *ngIf="interPreTextual.invalid && interPreTextual.dirty">Inter Pre Textual é
               obrigatória</span>
           </div>
@@ -201,9 +204,9 @@
         <div [ngClass]="getFormGroupClass(interdisciplinaridade.invalid,interdisciplinaridade.dirty)">
           <label for="inputInterdisciplinaridade" class="col-sm-2 control-label">Interdisciplinaridade</label>
           <div class="col-sm-10">
-            <textarea [(ngModel)]="planoDeEnsino.interdisciplinaridade" rows="5" name="interdisciplinaridade" class="form-control"
-              id="inputInterdisciplinaridade" placeholder="Interdisciplinaridade" #interdisciplinaridade="ngModel"
-              required>
+            <textarea [(ngModel)]="planoDeEnsino.interdisciplinaridade" rows="5" name="interdisciplinaridade"
+              class="form-control" id="inputInterdisciplinaridade" placeholder="Interdisciplinaridade"
+              #interdisciplinaridade="ngModel" required>
             <span class="help-block" *ngIf="interdisciplinaridade.invalid && interdisciplinaridade.dirty">Interdisciplinaridade
               é obrigatória</span>
             </textarea>
@@ -242,8 +245,8 @@
         <div [ngClass]="getFormGroupClass(avaliacaoPreTextual.invalid,avaliacaoPreTextual.dirty)">
           <label for="inputAvaliacaoPreTextual" class="col-sm-2 control-label">Avaliação Pre-Textual</label>
           <div class="col-sm-10">
-            <input [(ngModel)]="planoDeEnsino.avaliacaoPreTextual" name="avaliacaoPreTextual" class="form-control" id="inputAvaliacaoPreTextual"
-              placeholder="Avaliação Pre-Textual" #avaliacaoPreTextual="ngModel" required>
+            <input [(ngModel)]="planoDeEnsino.avaliacaoPreTextual" name="avaliacaoPreTextual" class="form-control"
+              id="inputAvaliacaoPreTextual" placeholder="Avaliação Pre-Textual" #avaliacaoPreTextual="ngModel" required>
             <span class="help-block" *ngIf="avaliacaoPreTextual.invalid && avaliacaoPreTextual.dirty">Avaliação
               Pre-Textual é obrigatória</span>
           </div>
@@ -283,8 +286,8 @@
         <div [ngClass]="getFormGroupClass(biblioBasica.invalid,biblioBasica.dirty)">
           <label for="inputBiblioBasica" class="col-sm-2 control-label">Bibliografia Basica</label>
           <div class="col-sm-10">
-            <textarea [(ngModel)]="planoDeEnsino.biblioBasica" rows="5" name="biblioBasica" class="form-control" id="inputBiblioBasica"
-              placeholder="Bibliografia Basica" #biblioBasica="ngModel" required>
+            <textarea [(ngModel)]="planoDeEnsino.biblioBasica" rows="5" name="biblioBasica" class="form-control"
+              id="inputBiblioBasica" placeholder="Bibliografia Basica" #biblioBasica="ngModel" required>
             <span class="help-block" *ngIf="biblioBasica.invalid && biblioBasica.dirty">Bibliografia Basica é
               obrigatória</span>
               </textarea>
@@ -293,9 +296,9 @@
         <div [ngClass]="getFormGroupClass(biblioComplementar.invalid,biblioComplementar.dirty)">
           <label for="inputBiblioComplementar" class="col-sm-2 control-label">Bibliografia Complementar</label>
           <div class="col-sm-10">
-            <textarea [(ngModel)]="planoDeEnsino.biblioComplementar" rows="5" name="biblioComplementar" class="form-control"
-              id="inputBiblioComplementar" placeholder="Bibliografia Complementar" #biblioComplementar="ngModel"
-              required>
+            <textarea [(ngModel)]="planoDeEnsino.biblioComplementar" rows="5" name="biblioComplementar"
+              class="form-control" id="inputBiblioComplementar" placeholder="Bibliografia Complementar"
+              #biblioComplementar="ngModel" required>
             <span class="help-block" *ngIf="biblioComplementar.invalid && biblioComplementar.dirty">Bibliografia
               Complementar é obrigatória</span>
               </textarea>
@@ -304,8 +307,10 @@
 
       </div>
       <div class="box-footer">
-        <button [routerLink]="['/plano-de-ensino-list']" routerLinkActive="router-link-active" class="btn btn-danger pull-left">Cancelar</button>
-        <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right" routerLinkActive="router-link-active">Salvar</button>
+        <button [routerLink]="['/plano-de-ensino-list']" routerLinkActive="router-link-active"
+          class="btn btn-danger pull-left">Cancelar</button>
+        <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right"
+          routerLinkActive="router-link-active">Salvar</button>
       </div>
     </form>
   </div>

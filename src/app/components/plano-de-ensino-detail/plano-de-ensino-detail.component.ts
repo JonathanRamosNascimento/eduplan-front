@@ -23,7 +23,8 @@ export class PlanoDeEnsinoDetailComponent implements OnInit {
 
   constructor(
     private planoDeEnsinoService: PlanoDeEnsinoService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute
+  ) {
     this.shared = SharedService.getInstance();
   }
 

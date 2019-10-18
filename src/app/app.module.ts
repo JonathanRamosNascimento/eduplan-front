@@ -1,3 +1,4 @@
+import { DisciplinaService } from './services/disciplina/disciplina.service';
 import { PlanoDeEnsinoService } from './services/plano-de-ensino/plano-de-ensino.service';
 import { PlanoDeEnsinoDetailComponent } from './components/plano-de-ensino-detail/plano-de-ensino-detail.component';
 import { PlanoDeEnsinoListComponent } from './components/plano-de-ensino-list/plano-de-ensino-list.component';
@@ -56,6 +57,7 @@ import { DisciplinaDetailComponent } from './components/disciplina-detail/discip
     SharedService,
     DialogService,
     PlanoDeEnsinoService,
+    DisciplinaService,
     { provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true

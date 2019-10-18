@@ -1,6 +1,66 @@
 <div class="col-md-12" style="margin-left: 0%;">
     <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Nova Disciplina</h3>
+        </div>
+        <form class="form-horizontal" #form="ngForm" (ngSubmit)="register()" novalidate>
+            <div [ngClass]="classCss" role="alert" *ngIf="message">
+                <strong>{{ message.text }}</strong>
+            </div>
 
+            <div class="box-body">
 
+                <div [ngClass]="getFormGroupClass(nome.invalid,nome.dirty)">
+                    <label for="inputNome" class="col-sm-2 control-label">Disciplina</label>
+                    <div class="col-sm-10">
+                        <input type="text" autocomplete="off" [(ngModel)]="disciplina.nome" name="nome"
+                            class="form-control" id="inputNome" placeholder="Nome da disciplina" #nome="ngModel"
+                            required>
+                        <span class="help-block" *ngIf="nome.invalid && nome.dirty">Nome da disciplina é
+                            obrigatório</span>
+                    </div>
+                </div>
+
+                <div [ngClass]="getFormGroupClass(observacoes.invalid,observacoes.dirty)">
+                    <label for="inputObservacoes" class="col-sm-2 control-label">Observacoes</label>
+                    <div class="col-sm-10">
+                        <input type="text" autocomplete="off" [(ngModel)]="disciplina.observacoes" name="observacoes"
+                            class="form-control" id="inputObservacoes" placeholder="Observacões" #observacoes="ngModel"
+                            required>
+                        <span class="help-block" *ngIf="observacoes.invalid && observacoes.dirty">Observacões da
+                            disciplina é
+                            obrigatório</span>
+                    </div>
+                </div>
+
+                <div [ngClass]="getFormGroupClass(biblioBasica.invalid,biblioBasica.dirty)">
+                    <label for="inputBiblioBasica" class="col-sm-2 control-label">Bibliografias Basicas</label>
+                    <div class="col-sm-10">
+                        <input type="text" autocomplete="off" [(ngModel)]="disciplina.biblioBasica" name="biblioBasica"
+                            class="form-control" id="inputBiblioBasica" placeholder="Bibliografias basicas"
+                            #biblioBasica="ngModel" required>
+                        <span class="help-block" *ngIf="biblioBasica.invalid && biblioBasica.dirty">Bibliografias
+                            basicas da disciplina é obrigatório</span>
+                    </div>
+                </div>
+
+                <div [ngClass]="getFormGroupClass(biblioComplementar.invalid,biblioComplementar.dirty)">
+                    <label for="inputBiblioComplementar" class="col-sm-2 control-label">Bibliografias Complementar</label>
+                    <div class="col-sm-10">
+                        <input type="text" autocomplete="off" [(ngModel)]="disciplina.biblioComplementar" name="biblioComplementar" class="form-control" id="inputBiblioComplementar" placeholder="Bibliografias complementar"
+                            #biblioComplementar="ngModel" required>
+                        <span class="help-block" *ngIf="biblioComplementar.invalid && biblioComplementar.dirty">Bibliografias complementar da disciplina é obrigatório</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="box-footer">
+                <button [routerLink]="['/disciplina-list']" routerLinkActive="router-link-active"
+                    class="btn btn-danger pull-left">Cancelar</button>
+                <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right"
+                    routerLinkActive="router-link-active">Salvar</button>
+            </div>
+        </form>
     </div>
 </div>

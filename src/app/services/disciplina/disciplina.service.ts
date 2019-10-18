@@ -22,7 +22,7 @@ export class DisciplinaService {
   }
 
   findById(id: string) {
-    return this.http.get(`${EDUPLAN_API}/api/disciplinas/${id}`);
+    return this.http.get(`${EDUPLAN_API}/api/disciplina/${id}`);
   }
 
   delete(id: string) {
