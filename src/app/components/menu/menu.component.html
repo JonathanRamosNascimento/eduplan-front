@@ -4,14 +4,14 @@
 
       <li class="treeview" *ngIf="shared.user.profile == 'DIRETOR'">
         <a href="#">
-          <i class="fa fa-user"></i> <span>Usuarios</span>
+          <i class="fa fa-book"></i> <span>Disciplinas</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a [routerLink]="['/user-new']"><i class="fa fa-edit"></i>Novo</a></li>
-          <li><a [routerLink]="['/user-list']"><i class="fa fa-list"></i>Lista</a></li>
+          <li><a [routerLink]="['/disciplina-new']"><i class="fa fa-edit"></i>Nova</a></li>
+          <li><a [routerLink]="['/disciplina-list']"><i class="fa fa-list"></i>Lista</a></li>
         </ul>
       </li>
 
@@ -27,17 +27,17 @@
           <li><a [routerLink]="['/plano-de-ensino-list']"><i class="fa fa-list"></i>Lista</a></li>
         </ul>
       </li>
-
-      <li class="treeview">
+      
+      <li class="treeview" *ngIf="shared.user.profile == 'DIRETOR'">
         <a href="#">
-          <i class="fa fa-book"></i> <span>Disciplinas</span>
+          <i class="fa fa-user"></i> <span>Usuarios</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a [routerLink]="['/disciplina-new']"><i class="fa fa-edit"></i>Nova</a></li>
-          <li><a [routerLink]="['/disciplina-list']"><i class="fa fa-list"></i>Lista</a></li>
+          <li><a [routerLink]="['/user-new']"><i class="fa fa-edit"></i>Novo</a></li>
+          <li><a [routerLink]="['/user-list']"><i class="fa fa-list"></i>Lista</a></li>
         </ul>
       </li>
       
