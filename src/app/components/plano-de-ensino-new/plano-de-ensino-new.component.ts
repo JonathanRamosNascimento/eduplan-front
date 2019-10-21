@@ -95,11 +95,21 @@ export class PlanoDeEnsinoNewComponent implements OnInit {
   findAllDisciplinas() {
     this.disciplinaService.findAll(0, 10).subscribe((responseApi: ResponseApi) => {
       this.listDisciplina = responseApi['data']['content'];
+      console.log(this.listDisciplina);
     }, err => {
       this.showMessage({
         type: 'error',
         text: err['error']['errors'][0]
       });
     });
+  }
+
+  changeField() {
+    let nomeDaDisciplina = this.form.value.disciplina;
+    let filtroDisciplina = this.listDisciplina.filter(function (disciplina) {
+      return disciplina.nome == nomeDaDisciplina;
+    })
+    this.planoDeEnsino.biblioBasica = filtroDisciplina[0].biblioBasica;
+    this.planoDeEnsino.biblioComplementar = filtroDisciplina[0].biblioComplementar;
   }
 }
