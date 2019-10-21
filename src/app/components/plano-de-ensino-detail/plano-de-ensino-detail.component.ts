@@ -1,10 +1,12 @@
+import { element } from 'protractor';
 import { PlanoDeEnsinoService } from './../../services/plano-de-ensino/plano-de-ensino.service';
 import { ResponseApi } from '../../model/response-api';
 import { ActivatedRoute } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
 import { NgForm } from '@angular/forms';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { PlanoDeEnsino } from '../../model/plano-de-ensino';
+import * as jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-ticket-detail',
@@ -12,6 +14,8 @@ import { PlanoDeEnsino } from '../../model/plano-de-ensino';
   styleUrls: ['./plano-de-ensino-detail.component.css']
 })
 export class PlanoDeEnsinoDetailComponent implements OnInit {
+
+  @ViewChild('content') content: ElementRef;
 
   @ViewChild("form")
   form: NgForm;
@@ -32,6 +36,26 @@ export class PlanoDeEnsinoDetailComponent implements OnInit {
     if (id != undefined) {
       this.findById(id);
     }
+  }
+
+  // Modelo que possa ser usado para gerar o pdf do plano utilizando o jspdf
+  imprimir() {
+    let doc = new jsPDF();
+
+    let specialElementHandlers = {
+      '#editor': function(element, renderer) {
+        return true;
+      }
+    };
+
+    let content = this.content.nativeElement;
+
+    doc.fromHTML(content.innerHTML, 15, 15, {
+      'width': 190,
+      'elementHandlers': specialElementHandlers
+    });
+
+    doc.save('teste.pdf');
   }
 
   findById(id: string) {

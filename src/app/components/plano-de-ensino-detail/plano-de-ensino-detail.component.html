@@ -7,7 +7,8 @@
       <div [ngClass]="classCss" role="alert" *ngIf="message">
         <strong>{{ message.text }}</strong>
       </div>
-      <div class="box-body">
+      <div class="box-body" #content>
+        <h1>Plano de ensino</h1>
         <ul class="list-group list-group-unbordered">
           <li class="list-group-item">
             <b>Disciplina :</b> <span>{{planoDeEnsino.disciplina}}</span>
@@ -93,9 +94,10 @@
             <b>Bibliografia Complementar :</b> <span>{{planoDeEnsino.biblioComplementar}}</span>
           </li>
         </ul>
-        <button [routerLink]="['/plano-de-ensino-list']" routerLinkActive="router-link-active" class="btn btn-info pull-left">Voltar</button>
-        <button class="btn btn-secondary pull-right" onclick="window.print();">Imprimir</button>
       </div>
+      <button [routerLink]="['/plano-de-ensino-list']" routerLinkActive="router-link-active"
+        class="btn btn-info pull-left">Voltar</button>
+      <button class="btn btn-secondary pull-right" (click)="imprimir()">Imprimir</button>
     </form>
   </div>
 </div>
