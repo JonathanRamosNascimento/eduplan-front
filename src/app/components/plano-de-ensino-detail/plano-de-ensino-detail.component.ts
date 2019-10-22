@@ -1,4 +1,3 @@
-import { element } from 'protractor';
 import { PlanoDeEnsinoService } from './../../services/plano-de-ensino/plano-de-ensino.service';
 import { ResponseApi } from '../../model/response-api';
 import { ActivatedRoute } from '@angular/router';
@@ -6,7 +5,8 @@ import { SharedService } from '../../services/shared.service';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { PlanoDeEnsino } from '../../model/plano-de-ensino';
-import * as jsPDF from 'jspdf';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 
 @Component({
   selector: 'app-ticket-detail',
@@ -38,24 +38,35 @@ export class PlanoDeEnsinoDetailComponent implements OnInit {
     }
   }
 
-  // Modelo que possa ser usado para gerar o pdf do plano utilizando o jspdf
-  imprimir() {
-    let doc = new jsPDF();
-
-    let specialElementHandlers = {
-      '#editor': function(element, renderer) {
-        return true;
+  // Modelo que possa ser usado para gerar o pdf do plano utilizando o pdfMake
+  gerarPdf() {
+    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+    var dd = {
+      content: [
+        {
+          text: 'UniEVANGÉLICA',
+          style: 'header',
+          alignment: 'center'
+        },
+        {
+          text: 'Plano de Ensino',
+          alignment: 'center'
+        },
+        {
+          text: 'Docente: ',
+        },
+        {
+          text: 'Disciplina: ' + this.planoDeEnsino.disciplina
+        },
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true
+        }
       }
     };
-
-    let content = this.content.nativeElement;
-
-    doc.fromHTML(content.innerHTML, 15, 15, {
-      'width': 190,
-      'elementHandlers': specialElementHandlers
-    });
-
-    doc.save('teste.pdf');
+    pdfMake.createPdf(dd).download();
   }
 
   findById(id: string) {

@@ -94,10 +94,10 @@
             <b>Bibliografia Complementar :</b> <span>{{planoDeEnsino.biblioComplementar}}</span>
           </li>
         </ul>
+        <button [routerLink]="['/plano-de-ensino-list']" routerLinkActive="router-link-active"
+          class="btn btn-info pull-left">Voltar</button>
+        <button class="btn btn-secondary pull-right" (click)="gerarPdf()">Gerar PDF</button>
       </div>
-      <button [routerLink]="['/plano-de-ensino-list']" routerLinkActive="router-link-active"
-        class="btn btn-info pull-left">Voltar</button>
-      <button class="btn btn-secondary pull-right" (click)="imprimir()">Imprimir</button>
     </form>
   </div>
 </div>
