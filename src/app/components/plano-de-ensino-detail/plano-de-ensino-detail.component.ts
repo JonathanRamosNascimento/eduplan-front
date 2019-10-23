@@ -52,39 +52,58 @@ export class PlanoDeEnsinoDetailComponent implements OnInit {
           text: 'Plano de Ensino',
           alignment: 'center'
         },
+        ' ',
         {
           text: 'CURSO DE ENGENHARIA DE COMPUTAÇÃO',
           style: 'nomeCurso',
           alignment: 'center'
         },
+        ' ',
         {
           text: '1. CARACTERIZAÇÃO DA DISCIPLINA',
           style: 'subTitulo'
         },
         {
-          text: 'Disciplina: ' + this.planoDeEnsino.disciplina,
+          text: [
+            { text: 'Disciplina: ', bold: true }
+            , this.planoDeEnsino.disciplina
+          ],
           style: 'corpo'
         },
         {
-          text: 'Carga Horaria Teórica: ' + this.planoDeEnsino.chteorica + 'h/a',
+          text: [
+            { text: 'Carga Horaria Teórica: ', bold: true },
+            this.planoDeEnsino.chteorica + 'h/a'
+          ],
           style: 'corpo'
         },
         {
-          text: 'Carga Horaria Pratica: ' + this.planoDeEnsino.chpratica + 'h/a',
+          text: [
+            { text: 'Carga Horaria Pratica: ', bold: true },
+            this.planoDeEnsino.chpratica + 'h/a'
+          ],
           style: 'corpo'
         },
         {
-          text: 'Carga Horaria Total: ' + this.planoDeEnsino.chtotal + 'h/a',
+          text: [
+            { text: 'Carga Horaria Total: ', bold: true },
+            this.planoDeEnsino.chtotal + 'h/a'
+          ],
           style: 'corpo'
         },
+        ' ',
         {
           text: '2. PROFESSOR(ES)',
           style: 'subTitulo'
         },
         {
-          text: 'Docente: ' + this.planoDeEnsino.user.nome,
+          text: [
+            { text: 'Docente: ', bold: true },
+            this.planoDeEnsino.user.nome
+          ],
           style: 'corpo'
         },
+        ' ',
         {
           text: '3. EMENTA',
           style: 'subTitulo'
@@ -93,6 +112,7 @@ export class PlanoDeEnsinoDetailComponent implements OnInit {
           text: this.planoDeEnsino.ementa,
           style: 'corpo'
         },
+        ' ',
         {
           text: '4. OBJETIVOS GERAIS',
           style: 'subTitulo'
@@ -102,6 +122,13 @@ export class PlanoDeEnsinoDetailComponent implements OnInit {
           style: 'corpo'
         }
       ],
+      
+      footer:[ 
+        {text: 'Centro Universitário de Anápolis - UniEVANGÉLICA', alignment: 'center', bold: true, fontSize: 13},
+        {text: 'Avenida Universitária, km. 3,5 - Cidade Universitária - Anápolis - GO - CEP: 75.083-515 - Fone:(62)3310 6600 - www.unievangelica.edu.br', alignment: 'center', fontSize: 9},
+        {text: '"...grandes coisas fez o Senhor por nós, por isso estamos alegres." SI 126,3', alignment: 'center', fontSize: 9},
+      ],
+
       styles: {
         header: {
           fontSize: 18,
@@ -115,7 +142,7 @@ export class PlanoDeEnsinoDetailComponent implements OnInit {
           bold: true
         },
         corpo: {
-          fontSize: 12,
+          fontSize: 10,
           alignment: 'justify'
         }
       }
