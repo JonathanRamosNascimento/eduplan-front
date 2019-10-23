@@ -53,16 +53,70 @@ export class PlanoDeEnsinoDetailComponent implements OnInit {
           alignment: 'center'
         },
         {
-          text: 'Docente: ',
+          text: 'CURSO DE ENGENHARIA DE COMPUTAÇÃO',
+          style: 'nomeCurso',
+          alignment: 'center'
         },
         {
-          text: 'Disciplina: ' + this.planoDeEnsino.disciplina
+          text: '1. CARACTERIZAÇÃO DA DISCIPLINA',
+          style: 'subTitulo'
         },
+        {
+          text: 'Disciplina: ' + this.planoDeEnsino.disciplina,
+          style: 'corpo'
+        },
+        {
+          text: 'Carga Horaria Teórica: ' + this.planoDeEnsino.chteorica + 'h/a',
+          style: 'corpo'
+        },
+        {
+          text: 'Carga Horaria Pratica: ' + this.planoDeEnsino.chpratica + 'h/a',
+          style: 'corpo'
+        },
+        {
+          text: 'Carga Horaria Total: ' + this.planoDeEnsino.chtotal + 'h/a',
+          style: 'corpo'
+        },
+        {
+          text: '2. PROFESSOR(ES)',
+          style: 'subTitulo'
+        },
+        {
+          text: 'Docente: ' + this.planoDeEnsino.user.nome,
+          style: 'corpo'
+        },
+        {
+          text: '3. EMENTA',
+          style: 'subTitulo'
+        },
+        {
+          text: this.planoDeEnsino.ementa,
+          style: 'corpo'
+        },
+        {
+          text: '4. OBJETIVOS GERAIS',
+          style: 'subTitulo'
+        },
+        {
+          text: this.planoDeEnsino.objetivos,
+          style: 'corpo'
+        }
       ],
       styles: {
         header: {
           fontSize: 18,
           bold: true
+        },
+        nomeCurso: {
+          fontSize: 25,
+          bold: true
+        },
+        subTitulo: {
+          bold: true
+        },
+        corpo: {
+          fontSize: 12,
+          alignment: 'justify'
         }
       }
     };
