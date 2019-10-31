@@ -1,7 +1,5 @@
 import { ResponseApi } from './../../model/response-api';
 import { DisciplinaService } from './../../services/disciplina/disciplina.service';
-import { UserService } from './../../services/user/user.service';
-import { User } from './../../model/user';
 import { PlanoDeEnsinoService } from './../../services/plano-de-ensino/plano-de-ensino.service';
 import { ActivatedRoute } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
@@ -108,8 +106,21 @@ export class PlanoDeEnsinoNewComponent implements OnInit {
     let nomeDaDisciplina = this.form.value.disciplina;
     let filtroDisciplina = this.listDisciplina.filter(function (disciplina) {
       return disciplina.nome == nomeDaDisciplina;
-    })
-    this.planoDeEnsino.biblioBasica = filtroDisciplina[0].biblioBasica;
-    this.planoDeEnsino.biblioComplementar = filtroDisciplina[0].biblioComplementar;
+    });
+    this.planoDeEnsino.chtotal = filtroDisciplina[0].chtotal;
+    this.planoDeEnsino.chteorica = filtroDisciplina[0].chteorica;
+    this.planoDeEnsino.chpratica = filtroDisciplina[0].chpratica;
+    this.planoDeEnsino.ementa = filtroDisciplina[0].ementa;
+    this.planoDeEnsino.objetivoGeral = filtroDisciplina[0].objetivoGeral;
+    this.planoDeEnsino.objetivoEspecifico = filtroDisciplina[0].objetivoEspecifico;
+    this.planoDeEnsino.habilidadeCompetencias = filtroDisciplina[0].habilidadeCompetencias;
+    this.planoDeEnsino.conteudoProgramatico = filtroDisciplina[0].conteudoProgramatico;
+    this.planoDeEnsino.procedimentosDidaticos = filtroDisciplina[0].procedimentosDidaticos;
+    this.planoDeEnsino.atividadeIntegrativa = filtroDisciplina[0].atividadeIntegrativa;
+    this.planoDeEnsino.primeiraVA = filtroDisciplina[0].primeiraVA;
+    this.planoDeEnsino.segundaVA = filtroDisciplina[0].segundaVA;
+    this.planoDeEnsino.terceiraVA = filtroDisciplina[0].terceiraVA;
+    this.planoDeEnsino.bibliografiaBasica = filtroDisciplina[0].bibliografiaBasica;
+    this.planoDeEnsino.bibliografiaComplementar = filtroDisciplina[0].bibliografiaComplementar;
   }
 }

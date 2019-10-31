@@ -46,23 +46,6 @@ export class PlanoDeEnsinoListComponent implements OnInit {
     });
   }
 
-  filter(): void {
-    this.page = 0;
-    this.count = 5;
-    this.planoDeEnsinoService.findByParams(this.page, this.count, this.planoDeEnsinoFilter)
-      .subscribe((responseApi: ResponseApi) => {
-        this.planoDeEnsinoFilter.disciplina = this.planoDeEnsinoFilter.disciplina == 'uninformed' ? "" : this.planoDeEnsinoFilter.disciplina;
-        this.planoDeEnsinoFilter.numero = this.planoDeEnsinoFilter.numero == 0 ? null : this.planoDeEnsinoFilter.numero;
-        this.listPlanoDeEnsino = responseApi['data']['content'];
-        this.pages = new Array(responseApi['data']['totalPages']);
-      }, err => {
-        this.showMessage({
-          type: 'error',
-          text: err['error']['errors'][0]
-        });
-      });
-  }
-
   cleanFilter(): void {
     this.assignedToMe = false;
     this.page = 0;
