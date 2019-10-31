@@ -5,7 +5,6 @@ import { PlanoDeEnsinoNewComponent } from './components/plano-de-ensino-new/plan
 import { DialogService } from './dialog.service';
 import { SharedService } from './services/shared.service';
 import { UserService } from './services/user/user.service';
-import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';

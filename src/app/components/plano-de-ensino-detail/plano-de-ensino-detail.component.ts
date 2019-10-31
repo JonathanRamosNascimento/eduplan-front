@@ -122,11 +122,11 @@ export class PlanoDeEnsinoDetailComponent implements OnInit {
           style: 'corpo'
         }
       ],
-      
-      footer:[ 
-        {text: 'Centro Universitário de Anápolis - UniEVANGÉLICA', alignment: 'center', bold: true, fontSize: 13},
-        {text: 'Avenida Universitária, km. 3,5 - Cidade Universitária - Anápolis - GO - CEP: 75.083-515 - Fone:(62)3310 6600 - www.unievangelica.edu.br', alignment: 'center', fontSize: 9},
-        {text: '"...grandes coisas fez o Senhor por nós, por isso estamos alegres." SI 126,3', alignment: 'center', fontSize: 9},
+
+      footer: [
+        { text: 'Centro Universitário de Anápolis - UniEVANGÉLICA', alignment: 'center', bold: true, fontSize: 11 },
+        { text: 'Avenida Universitária, km. 3,5 - Cidade Universitária - Anápolis - GO - CEP: 75.083-515 - Fone:(62)3310 6600 - www.unievangelica.edu.br', alignment: 'center', fontSize: 9 },
+        { text: '"...grandes coisas fez o Senhor por nós, por isso estamos alegres." SI 126,3', alignment: 'center', fontSize: 8 },
       ],
 
       styles: {
