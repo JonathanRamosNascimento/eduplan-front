@@ -28,10 +28,4 @@ export class PlanoDeEnsinoService {
   delete(id:string){
     return this.http.delete(`${EDUPLAN_API}/api/plano-de-ensino/${id}`);
   }
-
-  findByParams(page:number,count:number,t:PlanoDeEnsino){
-    t.numero = t.numero == null ? 0 : t.numero;
-    t.disciplina = t.disciplina == '' ? "uninformed" : t.disciplina;
-    return this.http.get(`${EDUPLAN_API}/api/plano-de-ensino/${page}/${count}/${t.numero}/${t.disciplina}`);
-  }
 }

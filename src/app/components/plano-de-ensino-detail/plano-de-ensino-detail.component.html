@@ -7,94 +7,100 @@
       <div [ngClass]="classCss" role="alert" *ngIf="message">
         <strong>{{ message.text }}</strong>
       </div>
-      <div class="box-body">
+      <div class="box-body" style="overflow: auto; max-height: 670px; overflow-x: hidden;">
+
         <ul class="list-group list-group-unbordered">
+
           <li class="list-group-item">
             <b>Disciplina :</b> <span>{{planoDeEnsino.disciplina}}</span>
-            <span class="pull-right"><b>Docente :</b> <span>{{planoDeEnsino?.user?.nome}}</span></span>
+            <span class="pull-right">
+              <b>Docente :</b> <span>{{planoDeEnsino?.user?.nome}}</span>
+            </span>
           </li>
+
           <li class="list-group-item">
             <b>Data da criação :</b> <span>{{planoDeEnsino.data | date:'dd/MM/yyyy'}}</span>
-            <span class="pull-right"><b>Turno :</b> <span>{{planoDeEnsino.turno}}</span></span>
+            <span class="pull-right">
+              <b>Turno :</b> <span>{{planoDeEnsino.turno}}</span>
+            </span>
           </li>
-          <li class="list-group-item">
-            <b>Carga Horaria Teorica :</b> <span>{{planoDeEnsino.chteorica}}</span>
-            <span class="pull-right"><b>Carga Horaria Pratica :</b> <span>{{planoDeEnsino.chpratica}}</span></span>
-          </li>
-          <li class="list-group-item">
-            <b>Carga Horaria Total :</b> <span>{{planoDeEnsino.chtotal}}</span>
-            <span class="pull-right"><b>Creditos :</b> <span>{{planoDeEnsino.creditos}}</span></span>
-          </li>
+
           <li class="list-group-item">
             <b>Periodo :</b> <span>{{planoDeEnsino.periodo}}</span>
-            <span class="pull-right"><b>Ano :</b> <span>{{planoDeEnsino.ano}}</span></span>
+            <span class="pull-right">
+              <b>Ano :</b> <span>{{planoDeEnsino.ano}}</span>
+            </span>
           </li>
+
           <li class="list-group-item">
             <b>Semestre :</b> <span>{{planoDeEnsino.semestre}}</span>
+            <span class="pull-right">
+              <b>Carga Horaria Teorica :</b> <span>{{planoDeEnsino.chteorica}}</span>
+            </span>
           </li>
+
+          <li class="list-group-item">
+            <b>Carga Horaria Total :</b> <span>{{planoDeEnsino.chtotal}}</span>
+            <span class="pull-right">
+              <b>Carga Horaria Pratica :</b> <span>{{planoDeEnsino.chpratica}}</span>
+            </span>
+          </li>
+
           <li class="list-group-item">
             <b>Ementa :</b> <span>{{planoDeEnsino.ementa}}</span>
           </li>
+
           <li class="list-group-item">
-            <b>Justificativa :</b> <span>{{planoDeEnsino.justificativa}}</span>
+            <b>Objetivos Gerais :</b> <span>{{planoDeEnsino.objetivoGeral}}</span>
           </li>
+
           <li class="list-group-item">
-            <b>Objetivos :</b> <span>{{planoDeEnsino.objetivos}}</span>
+            <b>Objetivos Especificos :</b> <span>{{planoDeEnsino.objetivoEspecifico}}</span>
           </li>
+
           <li class="list-group-item">
-            <b>Competencia Pré Textual :</b> <span>{{planoDeEnsino.competenciaPreTextual}}</span>
+            <b>Habilidade e Competencias :</b> <span>{{planoDeEnsino.habilidadeCompetencias}}</span>
           </li>
+
           <li class="list-group-item">
-            <b>Competencia Pessoal :</b> <span>{{planoDeEnsino.competenciaPessoal}}</span>
+            <b>Conteudo Programatico :</b> <span>{{planoDeEnsino.conteudoProgramatico}}</span>
           </li>
+
           <li class="list-group-item">
-            <b>Competencia Inter Pessoal :</b> <span>{{planoDeEnsino.competenciaInterpessoal}}</span>
+            <b>Procedimentos Didaticos :</b> <span>{{planoDeEnsino.procedimentosDidaticos}}</span>
           </li>
+
           <li class="list-group-item">
-            <b>Competencia Tecnica :</b> <span>{{planoDeEnsino.competenciaTecnica}}</span>
+            <b>Atividade Integrativa :</b> <span>{{planoDeEnsino.atividadeIntegrativa}}</span>
           </li>
+
           <li class="list-group-item">
-            <b>Competencia Pos Textual :</b> <span>{{planoDeEnsino.competenciaPosTextual}}</span>
+            <b>Primeira VA :</b> <span>{{planoDeEnsino.primeiraVA}}</span>
           </li>
+
           <li class="list-group-item">
-            <b>Inter Pre Textual :</b> <span>{{planoDeEnsino.interPreTextual}}</span>
+            <b>Segunda VA :</b> <span>{{planoDeEnsino.segundaVA}}</span>
           </li>
+
           <li class="list-group-item">
-            <b>Interdisciplinaridade :</b> <span>{{planoDeEnsino.interdisciplinaridade}}</span>
+            <b>Terceira VA :</b> <span>{{planoDeEnsino.terceiraVA}}</span>
           </li>
+
           <li class="list-group-item">
-            <b>Unidade Didatica :</b> <span>{{planoDeEnsino.unidadeDidatica}}</span>
+            <b>Bibliografia Basica :</b> <span>{{planoDeEnsino.bibliografiaBasica}}</span>
           </li>
+
           <li class="list-group-item">
-            <b>Cronograma :</b> <span>{{planoDeEnsino.cronogramaAulas}}</span>
+            <b>Bibliografia Complementar :</b> <span>{{planoDeEnsino.bibliografiaComplementar}}</span>
           </li>
-          <li class="list-group-item">
-            <b>Desenvolvimento :</b> <span>{{planoDeEnsino.desenvolvimento}}</span>
-          </li>
-          <li class="list-group-item">
-            <b>Avaliacao Pre Textual :</b> <span>{{planoDeEnsino.avaliacaoPreTextual}}</span>
-          </li>
-          <li class="list-group-item">
-            <b>Primeira VA :</b> <span>{{planoDeEnsino.primeiraVa}}</span>
-          </li>
-          <li class="list-group-item">
-            <b>Segunda VA :</b> <span>{{planoDeEnsino.segundaVa}}</span>
-          </li>
-          <li class="list-group-item">
-            <b>Terceira VA :</b> <span>{{planoDeEnsino.terceiraVa}}</span>
-          </li>
-          <li class="list-group-item">
-            <b>Observações :</b> <span>{{planoDeEnsino.observacoes}}</span>
-          </li>
-          <li class="list-group-item">
-            <b>Bibliografia Basica :</b> <span>{{planoDeEnsino.biblioBasica}}</span>
-          </li>
-          <li class="list-group-item">
-            <b>Bibliografia Complementar :</b> <span>{{planoDeEnsino.biblioComplementar}}</span>
-          </li>
+
         </ul>
-        <button [routerLink]="['/plano-de-ensino-list']" routerLinkActive="router-link-active" class="btn btn-info pull-left">Voltar</button>
-        <button class="btn btn-secondary pull-right" onclick="window.print();">Imprimir</button>
+
+      </div>
+      <div style="margin: 5px;">
+        <button [routerLink]="['/plano-de-ensino-list']" routerLinkActive="router-link-active"
+          class="btn btn-info pull-left">Voltar</button>
+        <button class="btn btn-secondary pull-right" (click)="gerarPdf()">Gerar PDF</button>
       </div>
     </form>
   </div>

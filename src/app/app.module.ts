@@ -1,3 +1,4 @@
+import { DisciplinaService } from './services/disciplina/disciplina.service';
 import { PlanoDeEnsinoService } from './services/plano-de-ensino/plano-de-ensino.service';
 import { PlanoDeEnsinoDetailComponent } from './components/plano-de-ensino-detail/plano-de-ensino-detail.component';
 import { PlanoDeEnsinoListComponent } from './components/plano-de-ensino-list/plano-de-ensino-list.component';
@@ -5,7 +6,6 @@ import { PlanoDeEnsinoNewComponent } from './components/plano-de-ensino-new/plan
 import { DialogService } from './dialog.service';
 import { SharedService } from './services/shared.service';
 import { UserService } from './services/user/user.service';
-import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
@@ -22,6 +22,9 @@ import { UserNewComponent } from './components/user-new/user-new.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { AuthInterceptor } from './components/security/auth.interceptor';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { DisciplinaNewComponent } from './components/disciplina-new/disciplina-new.component';
+import { DisciplinaListComponent } from './components/disciplina-list/disciplina-list.component';
+import { DisciplinaDetailComponent } from './components/disciplina-detail/disciplina-detail.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     PlanoDeEnsinoNewComponent,
     PlanoDeEnsinoListComponent,
     PlanoDeEnsinoDetailComponent,
+    DisciplinaNewComponent,
+    DisciplinaListComponent,
+    DisciplinaDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +56,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     SharedService,
     DialogService,
     PlanoDeEnsinoService,
+    DisciplinaService,
     { provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true

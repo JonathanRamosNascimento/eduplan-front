@@ -3,8 +3,10 @@ import { ResponseApi } from '../../model/response-api';
 import { ActivatedRoute } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
 import { NgForm } from '@angular/forms';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { PlanoDeEnsino } from '../../model/plano-de-ensino';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 
 @Component({
   selector: 'app-ticket-detail',
@@ -12,6 +14,8 @@ import { PlanoDeEnsino } from '../../model/plano-de-ensino';
   styleUrls: ['./plano-de-ensino-detail.component.css']
 })
 export class PlanoDeEnsinoDetailComponent implements OnInit {
+
+  @ViewChild('content') content: ElementRef;
 
   @ViewChild("form")
   form: NgForm;
@@ -23,7 +27,8 @@ export class PlanoDeEnsinoDetailComponent implements OnInit {
 
   constructor(
     private planoDeEnsinoService: PlanoDeEnsinoService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute
+  ) {
     this.shared = SharedService.getInstance();
   }
 
@@ -32,6 +37,118 @@ export class PlanoDeEnsinoDetailComponent implements OnInit {
     if (id != undefined) {
       this.findById(id);
     }
+  }
+
+  // Modelo que possa ser usado para gerar o pdf do plano utilizando o pdfMake
+  gerarPdf() {
+    pdfMake.vfs = pdfFonts.pdfMake.vfs;
+    var dd = {
+      content: [
+        {
+          text: 'UniEVANGÉLICA',
+          style: 'header',
+          alignment: 'center'
+        },
+        {
+          text: 'Plano de Ensino',
+          alignment: 'center'
+        },
+        ' ',
+        {
+          text: 'CURSO DE ENGENHARIA DE COMPUTAÇÃO',
+          style: 'nomeCurso',
+          alignment: 'center'
+        },
+        ' ',
+        {
+          text: '1. CARACTERIZAÇÃO DA DISCIPLINA',
+          style: 'subTitulo'
+        },
+        {
+          text: [
+            { text: 'Disciplina: ', bold: true }
+            , this.planoDeEnsino.disciplina
+          ],
+          style: 'corpo'
+        },
+        {
+          text: [
+            { text: 'Carga Horaria Teórica: ', bold: true },
+            this.planoDeEnsino.chteorica + 'h/a'
+          ],
+          style: 'corpo'
+        },
+        {
+          text: [
+            { text: 'Carga Horaria Pratica: ', bold: true },
+            this.planoDeEnsino.chpratica + 'h/a'
+          ],
+          style: 'corpo'
+        },
+        {
+          text: [
+            { text: 'Carga Horaria Total: ', bold: true },
+            this.planoDeEnsino.chtotal + 'h/a'
+          ],
+          style: 'corpo'
+        },
+        ' ',
+        {
+          text: '2. PROFESSOR(ES)',
+          style: 'subTitulo'
+        },
+        {
+          text: [
+            { text: 'Docente: ', bold: true },
+            this.planoDeEnsino.user.nome
+          ],
+          style: 'corpo'
+        },
+        ' ',
+        {
+          text: '3. EMENTA',
+          style: 'subTitulo'
+        },
+        {
+          text: this.planoDeEnsino.ementa,
+          style: 'corpo'
+        },
+        ' ',
+        {
+          text: '4. OBJETIVOS GERAIS',
+          style: 'subTitulo'
+        },
+        {
+          text: this.planoDeEnsino.objetivoGeral,
+          style: 'corpo'
+        }
+      ],
+
+      footer: [
+        { text: 'Centro Universitário de Anápolis - UniEVANGÉLICA', alignment: 'center', bold: true, fontSize: 11 },
+        { text: 'Avenida Universitária, km. 3,5 - Cidade Universitária - Anápolis - GO - CEP: 75.083-515 - Fone:(62)3310 6600 - www.unievangelica.edu.br', alignment: 'center', fontSize: 9 },
+        { text: '"...grandes coisas fez o Senhor por nós, por isso estamos alegres." SI 126,3', alignment: 'center', fontSize: 8 },
+      ],
+
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true
+        },
+        nomeCurso: {
+          fontSize: 25,
+          bold: true
+        },
+        subTitulo: {
+          bold: true
+        },
+        corpo: {
+          fontSize: 10,
+          alignment: 'justify'
+        }
+      }
+    };
+    pdfMake.createPdf(dd).download();
   }
 
   findById(id: string) {
