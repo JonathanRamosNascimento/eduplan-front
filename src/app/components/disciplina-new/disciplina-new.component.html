@@ -8,7 +8,7 @@
                 <strong>{{ message.text }}</strong>
             </div>
 
-            <div class="box-body">
+            <div class="box-body" style="overflow: auto; max-height: 650px; overflow-x: hidden;">
 
                 <div [ngClass]="getFormGroupClass(nome.invalid,nome.dirty)">
                     <label for="inputNome" class="col-sm-2 control-label">Nome da Disciplina</label>

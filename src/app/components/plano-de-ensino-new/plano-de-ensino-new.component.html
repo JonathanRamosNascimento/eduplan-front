@@ -7,7 +7,7 @@
       <div [ngClass]="classCss" role="alert" *ngIf="message">
         <strong>{{ message.text }}</strong>
       </div>
-      <div class="box-body">
+      <div class="box-body" style="overflow: auto; max-height: 650px; overflow-x: hidden;">
 
         <div [ngClass]="getFormGroupClass(disciplina.invalid,disciplina.dirty)">
           <label for="inputDisciplina" class="col-sm-2 control-label">Disciplina</label>
@@ -231,7 +231,3 @@
     </form>
   </div>
 </div>
-
-<pre>
-  {{ planoDeEnsino | json}}
-</pre>

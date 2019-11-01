@@ -7,7 +7,7 @@
       <div [ngClass]="classCss" role="alert" *ngIf="message">
         <strong>{{ message.text }}</strong>
       </div>
-      <div class="box-body">
+      <div class="box-body" style="overflow: auto; max-height: 670px; overflow-x: hidden;">
 
         <ul class="list-group list-group-unbordered">
 
@@ -96,6 +96,8 @@
 
         </ul>
 
+      </div>
+      <div style="margin: 5px;">
         <button [routerLink]="['/plano-de-ensino-list']" routerLinkActive="router-link-active"
           class="btn btn-info pull-left">Voltar</button>
         <button class="btn btn-secondary pull-right" onclick="window.print();">Imprimir</button>
