@@ -119,7 +119,7 @@ export class PlanoDeEnsinoDetailComponent implements OnInit {
           style: 'subTitulo'
         },
         {
-          text: this.planoDeEnsino.objetivos,
+          text: this.planoDeEnsino.objetivoGeral,
           style: 'corpo'
         }
       ],

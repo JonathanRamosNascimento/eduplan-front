@@ -100,7 +100,7 @@
       <div style="margin: 5px;">
         <button [routerLink]="['/plano-de-ensino-list']" routerLinkActive="router-link-active"
           class="btn btn-info pull-left">Voltar</button>
-        <button class="btn btn-secondary pull-right" onclick="window.print();">Imprimir</button>
+        <button class="btn btn-secondary pull-right" (click)="gerarPdf()">Gerar PDF</button>
       </div>
     </form>
   </div>
