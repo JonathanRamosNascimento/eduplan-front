@@ -1,0 +1,87 @@
+<div class="col-md-12" style="margin-left: 0%;">
+  <div class="box box-info">
+    <div class="box-header with-border">
+      <h3 class="box-title">Detalhes da Disciplina</h3>
+    </div>
+    <form class="form-horizontal" #form="ngForm" (ngSubmit)="register()" novalidate>
+      <div [ngClass]="classCss" role="alert" *ngIf="message">
+        <strong>{{ message.text }}</strong>
+      </div>
+
+      <div class="box-body">
+        <ul class="list-group list-group-unbordered">
+
+          <li class="list-group-item">
+            <b>Nome da Disciplina: </b> <span>{{disciplina.nome}}</span>
+            <span class="pull-right">
+              <b>Carga Horaria Pratica :</b> <span>{{disciplina.chpratica}}</span>
+            </span>
+          </li>
+
+          <li class="list-group-item">
+            <b>Carga Horaria Total :</b> <span>{{disciplina.chtotal}}</span>
+            <span class="pull-right">
+              <b>Carga Horaria Teorica :</b> <span>{{disciplina.chteorica}}</span>
+            </span>
+          </li>
+
+          <li class="list-group-item">
+            <b>Ementa :</b> <span>{{disciplina.ementa}}</span>
+          </li>
+
+          <li class="list-group-item">
+            <b>Objetivos Gerais :</b> <span>{{disciplina.objetivoGeral}}</span>
+          </li>
+
+          <li class="list-group-item">
+            <b>Objetivos Especificos :</b> <span>{{disciplina.objetivoEspecifico}}</span>
+          </li>
+
+          <li class="list-group-item">
+            <b>Habilidade e Competências :</b> <span>{{disciplina.habilidadeCompetencias}}</span>
+          </li>
+
+          <li class="list-group-item">
+            <b>Conteúdo Programático :</b> <span>{{disciplina.conteudoProgramatico}}</span>
+          </li>
+
+          <li class="list-group-item">
+            <b>Procedimentos Didáticos :</b> <span>{{disciplina.procedimentosDidaticos}}</span>
+          </li>
+
+          <li class="list-group-item">
+            <b>Atividade Integrativa :</b> <span>{{disciplina.atividadeIntegrativa}}</span>
+          </li>
+
+          <li class="list-group-item">
+            <b>Primeira VA :</b> <span>{{disciplina.primeiraVA}}</span>
+          </li>
+
+          <li class="list-group-item">
+            <b>Segunda VA :</b> <span>{{disciplina.segundaVA}}</span>
+          </li>
+
+          <li class="list-group-item">
+            <b>Terceira VA :</b> <span>{{disciplina.terceiraVA}}</span>
+          </li>
+
+          <li class="list-group-item">
+            <b>Bibliografia Básica :</b> <span>{{disciplina.bibliografiaBasica}}</span>
+          </li>
+
+          <li class="list-group-item">
+            <b>Bibliografia Complementar :</b> <span>{{disciplina.bibliografiaComplementar}}</span>
+          </li>
+
+        </ul>
+
+
+        <button [routerLink]="['/disciplina-list']" routerLinkActive="router-link-active"
+          class="btn btn-info pull-left">Voltar</button>
+        <button [routerLink]="['/disciplina-new/', disciplina.id]" routerLinkActive="router-link-active"
+          class="btn btn-secondary pull-right">Editar</button>
+      </div>
+
+    </form>
+  </div>
+</div>

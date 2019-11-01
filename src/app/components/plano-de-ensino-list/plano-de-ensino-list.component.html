@@ -7,17 +7,7 @@
             <div class="box-header with-border">
                 <h3 class="box-title">Lista de Planos de Ensino</h3>
             </div>
-            <div class="box-body">
-                <div class="form-group">
-                    <label for="inputDisciplina" class="col-sm-1 control-label">Disciplina: </label>
-                    <div class="col-sm-4">
-                        <input type="text" [(ngModel)]="planoDeEnsinoFilter.disciplina" name="disciplina" class="form-control"
-                            id="inputDisciplina">
-                    </div>
-                    <button class="btn btn-danger pull-left" (click)="cleanFilter()">Limpar Filtro</button>
-                    <button style="margin-left: 10px" class="btn btn-info pull-left" (click)="filter()">Filtrar</button>
-                </div>
-            </div>
+            
             <div class="box-body">
                 <table class="table table-bordered">
                     <tr>

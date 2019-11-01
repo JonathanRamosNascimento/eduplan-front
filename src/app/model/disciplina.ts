@@ -1,19 +1,9 @@
-import { User } from './user';
-
-export class PlanoDeEnsino {
+export class Disciplina {
     public id: string;
-    public user: User;
-    public assignedUser: User;
-    public data: string;
-    public disciplina: string;
-    public turno: string;
-    public periodo: string;
-    public ano: string;
-    public semestre: string;
+    public nome: string;
     public chtotal: string;
     public chteorica: string;
     public chpratica: string;
-    public creditos: string;
     public ementa: string;
     public objetivoGeral: string;
     public objetivoEspecifico: string;

@@ -1,42 +1,39 @@
-import { PlanoDeEnsinoService } from './../../services/plano-de-ensino/plano-de-ensino.service';
-import { ResponseApi } from '../../model/response-api';
-import { SharedService } from '../../services/shared.service';
+import { ResponseApi } from './../../model/response-api';
 import { Router } from '@angular/router';
+import { DisciplinaService } from './../../services/disciplina/disciplina.service';
+import { DialogService } from './../../dialog.service';
+import { Disciplina } from './../../model/disciplina';
+import { SharedService } from './../../services/shared.service';
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from '../../dialog.service';
-import { PlanoDeEnsino } from '../../model/plano-de-ensino';
 
 @Component({
-  selector: 'app-ticket-list',
-  templateUrl: './plano-de-ensino-list.component.html',
-  styleUrls: ['./plano-de-ensino-list.component.css']
+  selector: 'app-disciplina-list',
+  templateUrl: './disciplina-list.component.html',
+  styleUrls: ['./disciplina-list.component.css']
 })
-export class PlanoDeEnsinoListComponent implements OnInit {
+export class DisciplinaListComponent implements OnInit {
 
-  assignedToMe: boolean = false;
   page: number = 0;
   count: number = 12;
   pages: Array<number>;
   shared: SharedService;
   message: {};
   classCss: {};
-  listPlanoDeEnsino = [];
-  planoDeEnsinoFilter = new PlanoDeEnsino();
+  listDisciplina = [];
 
   constructor(
     private dialogService: DialogService,
-    private planoDeEnsinoService: PlanoDeEnsinoService,
-    private router: Router) {
-    this.shared = SharedService.getInstance();
-  }
+    private disciplinaService: DisciplinaService,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
     this.findAll(this.page, this.count);
   }
 
   findAll(page: number, count: number) {
-    this.planoDeEnsinoService.findAll(page, count).subscribe((responseApi: ResponseApi) => {
-      this.listPlanoDeEnsino = responseApi['data']['content'];
+    this.disciplinaService.findAll(page, count).subscribe((responseApi: ResponseApi) => {
+      this.listDisciplina = responseApi['data']['content'];
       this.pages = new Array(responseApi['data']['totalPages']);
     }, err => {
       this.showMessage({
@@ -46,32 +43,23 @@ export class PlanoDeEnsinoListComponent implements OnInit {
     });
   }
 
-  cleanFilter(): void {
-    this.assignedToMe = false;
-    this.page = 0;
-    this.count = 5;
-    this.planoDeEnsinoFilter = new PlanoDeEnsino();
-    this.findAll(this.page, this.count);
-  }
-
-
   edit(id: string) {
-    this.router.navigate(['/plano-de-ensino-new', id]);
+    this.router.navigate(['/disciplina-new', id]);
   }
 
   detail(id: string) {
-    this.router.navigate(['/plano-de-ensino-detail', id]);
+    this.router.navigate(['disciplina-detail', id]);
   }
 
-  delete(id: string, disciplina: string) {
-    this.dialogService.confirm('Deseja apagar o plano de ensino da disciplina ' + disciplina + '?')
+  delete(id: string, nome: string) {
+    this.dialogService.confirm('Deseja apagar a disciplina ' + nome + '?')
       .then((candelete: boolean) => {
         if (candelete) {
           this.message = {};
-          this.planoDeEnsinoService.delete(id).subscribe((responseApi: ResponseApi) => {
+          this.disciplinaService.delete(id).subscribe((responseApi: ResponseApi) => {
             this.showMessage({
               type: 'success',
-              text: `Plano de Ensino excluído com sucesso`
+              text: 'Disciplina excluída com sucesso!'
             });
             this.findAll(this.page, this.count);
           }, err => {
@@ -120,5 +108,4 @@ export class PlanoDeEnsinoListComponent implements OnInit {
     }
     this.classCss['alert-' + type] = true;
   }
-
 }
