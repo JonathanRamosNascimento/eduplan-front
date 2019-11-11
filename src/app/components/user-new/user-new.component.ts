@@ -22,6 +22,7 @@ export class UserNewComponent implements OnInit {
   message: {};
   classCss: {};
   id: string = this.route.snapshot.params['id'];
+  edit: string;
 
   constructor(
     private userService: UserService,
@@ -35,6 +36,12 @@ export class UserNewComponent implements OnInit {
     // let id: string = this.route.snapshot.params['id'];
     if (this.id != undefined) {
       this.findById(this.id);
+    }
+
+    if(this.id) {
+      this.edit = 'Editar Usuário';
+    }else {
+      this.edit = 'Novo Usuário';
     }
   }
 

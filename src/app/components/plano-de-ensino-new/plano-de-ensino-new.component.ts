@@ -23,6 +23,7 @@ export class PlanoDeEnsinoNewComponent implements OnInit {
   message: {};
   classCss: {};
   listDisciplina = [];
+  label: string;
 
   constructor(
     private planoDeEnsinoService: PlanoDeEnsinoService,
@@ -39,6 +40,12 @@ export class PlanoDeEnsinoNewComponent implements OnInit {
       this.findById(id);
     }
     this.findAllDisciplinas();
+
+    if(id) {
+      this.label = 'Editar Plano de Ensino';
+    }else{
+      this.label = 'Novo Plano de Ensino';
+    }
   }
 
   findById(id: string) {

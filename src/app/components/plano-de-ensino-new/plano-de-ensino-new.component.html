@@ -1,7 +1,7 @@
 <div class="col-md-12">
   <div class="box box-info">
     <div class="box-header with-border">
-      <h3 class="box-title">Novo Plano de Ensino</h3>
+      <h3 class="box-title">{{ label }}</h3>
     </div>
     <form class="form-horizontal" #form="ngForm" (ngSubmit)="register()" novalidate>
       <div [ngClass]="classCss" role="alert" *ngIf="message">

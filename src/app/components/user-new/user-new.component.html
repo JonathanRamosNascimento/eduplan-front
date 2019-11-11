@@ -1,7 +1,7 @@
 <div class="col-md-10" style="margin-left:0%">
   <div class="box box-info">
     <div class="box-header with-border">
-      <h3 class="box-title">Novo Usuário</h3>
+      <h3 class="box-title">{{ edit }}</h3>
     </div>
     <form class="form-horizontal" #form="ngForm" (ngSubmit)="register()" novalidate>
       <div [ngClass]="classCss" role="alert" *ngIf="message">

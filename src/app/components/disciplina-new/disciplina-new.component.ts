@@ -20,6 +20,7 @@ export class DisciplinaNewComponent implements OnInit {
   shared: SharedService;
   message: {};
   classCss: {};
+  label: string;
 
   constructor(
     private disciplinaService: DisciplinaService,
@@ -33,6 +34,9 @@ export class DisciplinaNewComponent implements OnInit {
     let id: string = this.route.snapshot.params['id'];
     if (id != undefined) {
       this.findById(id);
+      this.label = 'Editar Disciplina';
+    }else {
+      this.label = 'Nova Disciplina';
     }
   }
 
