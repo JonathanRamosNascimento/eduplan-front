@@ -15,9 +15,9 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 })
 export class PlanoDeEnsinoDetailComponent implements OnInit {
 
-  @ViewChild('content') content: ElementRef;
+  @ViewChild('content', {static: true}) content: ElementRef;
 
-  @ViewChild("form")
+  @ViewChild("form", {static: true})
   form: NgForm;
 
   planoDeEnsino = new PlanoDeEnsino();

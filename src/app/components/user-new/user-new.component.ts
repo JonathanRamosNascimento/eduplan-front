@@ -14,7 +14,7 @@ import { NgForm } from '@angular/forms';
 })
 export class UserNewComponent implements OnInit {
 
-  @ViewChild("form")
+  @ViewChild("form", { static: true })
   form: NgForm;
 
   user = new User();
