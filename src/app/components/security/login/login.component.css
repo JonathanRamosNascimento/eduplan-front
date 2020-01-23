@@ -7,5 +7,8 @@
 }
 
 .error {
-  color: red;
+  color: white;
+  font-size: 12px;
+  padding: 5px;
+  background: #eb583c;
 }
