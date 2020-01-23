@@ -4,6 +4,7 @@ import { UserService } from './../../../services/user/user.service';
 import { User } from './../../../model/user';
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +13,20 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  user = new User();
+  // user = new User();
   shared: SharedService;
   message: string;
 
-  constructor(private userService: UserService,
-    private router: Router) {
+  loginForm: FormGroup = this.fb.group({
+    'email': ['', [Validators.required, Validators.email]],
+    'password': ['', [Validators.required, Validators.minLength(6)]],
+  });
+
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private fb: FormBuilder
+    ) {
     this.shared = SharedService.getInstance();
   }
 
@@ -27,7 +36,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.message = '';
-    this.userService.login(this.user).subscribe((userAuthentication: CurrentUser) => {
+    this.userService.login(this.loginForm.value).subscribe((userAuthentication: CurrentUser) => {
       this.shared.token = userAuthentication.token;
       this.shared.user = userAuthentication.user;
       this.shared.user.profile = this.shared.user.profile.substring(5);
@@ -41,11 +50,14 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  getFormGroupClass(isInvalid: boolean, isDirty: boolean): {} {
+  verificaValidTouched(campo) {
+    return !this.loginForm.get(campo).valid && this.loginForm.get(campo).touched
+  }
+
+  aplicaCssErro(campo): {} {
     return {
-      'form-group': true,
-      'has-error': isInvalid && isDirty,
-      'has-success': !isInvalid && isDirty
+      'has-error': this.verificaValidTouched(campo),
+      'has-feedback': this.verificaValidTouched(campo)
     };
   }
 
