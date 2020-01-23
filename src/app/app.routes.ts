@@ -3,7 +3,6 @@ import { DisciplinaNewComponent } from './components/disciplina-new/disciplina-n
 import { PlanoDeEnsinoDetailComponent } from './components/plano-de-ensino-detail/plano-de-ensino-detail.component';
 import { PlanoDeEnsinoListComponent } from './components/plano-de-ensino-list/plano-de-ensino-list.component';
 import { PlanoDeEnsinoNewComponent } from './components/plano-de-ensino-new/plano-de-ensino-new.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { Routes, RouterModule } from "@angular/router";
 import { LoginComponent } from "./components/security/login/login.component";
 import { HomeComponent } from './components/home/home.component';
@@ -30,4 +29,3 @@ export const ROUTES: Routes = [
 ]
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(ROUTES);
-

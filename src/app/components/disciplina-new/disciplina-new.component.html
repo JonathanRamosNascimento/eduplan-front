@@ -1,192 +1,191 @@
 <div class="col-md-12" style="margin-left: 0%;">
-    <div class="box box-info">
-        <div class="box-header with-border">
-            <h3 class="box-title">Nova Disciplina</h3>
+  <div class="box box-info">
+    <div class="box-header with-border">
+      <h3 class="box-title">Nova Disciplina</h3>
+    </div>
+    <form class="form-horizontal" #form="ngForm" (ngSubmit)="register()" novalidate>
+      <div [ngClass]="classCss" role="alert" *ngIf="message">
+        <strong>{{ message.text }}</strong>
+      </div>
+
+      <div class="box-body" style="overflow: auto; max-height: 650px; overflow-x: hidden;">
+
+        <div [ngClass]="getFormGroupClass(nome.invalid,nome.dirty)">
+          <label for="inputNome" class="col-sm-2 control-label">Nome da Disciplina</label>
+          <div class="col-sm-10">
+            <input type="text" autocomplete="off" [(ngModel)]="disciplina.nome" name="nome" class="form-control"
+              id="inputNome" #nome="ngModel" required>
+            <span class="help-block" *ngIf="nome.invalid && nome.dirty">Nome da disciplina é
+              obrigatório</span>
+          </div>
         </div>
-        <form class="form-horizontal" #form="ngForm" (ngSubmit)="register()" novalidate>
-            <div [ngClass]="classCss" role="alert" *ngIf="message">
-                <strong>{{ message.text }}</strong>
-            </div>
 
-            <div class="box-body" style="overflow: auto; max-height: 650px; overflow-x: hidden;">
+        <div [ngClass]="getFormGroupClass(chteorica.invalid,chteorica.dirty)">
+          <label for="inputChTeorica" class="col-sm-2 control-label">Carga Horaria Teorica</label>
+          <div class="col-sm-10">
+            <input [(ngModel)]="disciplina.chteorica" name="chteorica" class="form-control" id="inputChTeorica"
+              #chteorica="ngModel" required>
+            <span class="help-block" *ngIf="chteorica.invalid && chteorica.dirty">Carga Horaria Teorica é
+              obrigatória</span>
+          </div>
+        </div>
 
-                <div [ngClass]="getFormGroupClass(nome.invalid,nome.dirty)">
-                    <label for="inputNome" class="col-sm-2 control-label">Nome da Disciplina</label>
-                    <div class="col-sm-10">
-                        <input type="text" autocomplete="off" [(ngModel)]="disciplina.nome" name="nome"
-                            class="form-control" id="inputNome" #nome="ngModel" required>
-                        <span class="help-block" *ngIf="nome.invalid && nome.dirty">Nome da disciplina é
-                            obrigatório</span>
-                    </div>
-                </div>
+        <div [ngClass]="getFormGroupClass(chpratica.invalid,chpratica.dirty)">
+          <label for="inputChPratica" class="col-sm-2 control-label">Carga Horaria Pratica</label>
+          <div class="col-sm-10">
+            <input [(ngModel)]="disciplina.chpratica" name="chpratica" class="form-control" id="inputChPratica"
+              #chpratica="ngModel" required>
+            <span class="help-block" *ngIf="chpratica.invalid && chpratica.dirty">Carga Horaria Pratica é
+              obrigatória</span>
+          </div>
+        </div>
 
-                <div [ngClass]="getFormGroupClass(chteorica.invalid,chteorica.dirty)">
-                    <label for="inputChTeorica" class="col-sm-2 control-label">Carga Horaria Teorica</label>
-                    <div class="col-sm-10">
-                        <input [(ngModel)]="disciplina.chteorica" name="chteorica" class="form-control"
-                            id="inputChTeorica" #chteorica="ngModel" required>
-                        <span class="help-block" *ngIf="chteorica.invalid && chteorica.dirty">Carga Horaria Teorica é
-                            obrigatória</span>
-                    </div>
-                </div>
+        <div [ngClass]="getFormGroupClass(chtotal.invalid,chtotal.dirty)">
+          <label for="inputChTotal" class="col-sm-2 control-label">Carga Horaria Total</label>
+          <div class="col-sm-10">
+            <input [(ngModel)]="disciplina.chtotal" name="chtotal" class="form-control" id="inputChTotal"
+              #chtotal="ngModel" required>
+            <span class="help-block" *ngIf="chtotal.invalid && chtotal.dirty">Carga Horaria Total é
+              obrigatória</span>
+          </div>
+        </div>
 
-                <div [ngClass]="getFormGroupClass(chpratica.invalid,chpratica.dirty)">
-                    <label for="inputChPratica" class="col-sm-2 control-label">Carga Horaria Pratica</label>
-                    <div class="col-sm-10">
-                        <input [(ngModel)]="disciplina.chpratica" name="chpratica" class="form-control"
-                            id="inputChPratica" #chpratica="ngModel" required>
-                        <span class="help-block" *ngIf="chpratica.invalid && chpratica.dirty">Carga Horaria Pratica é
-                            obrigatória</span>
-                    </div>
-                </div>
-
-                <div [ngClass]="getFormGroupClass(chtotal.invalid,chtotal.dirty)">
-                    <label for="inputChTotal" class="col-sm-2 control-label">Carga Horaria Total</label>
-                    <div class="col-sm-10">
-                        <input [(ngModel)]="disciplina.chtotal" name="chtotal" class="form-control" id="inputChTotal"
-                            #chtotal="ngModel" required>
-                        <span class="help-block" *ngIf="chtotal.invalid && chtotal.dirty">Carga Horaria Total é
-                            obrigatória</span>
-                    </div>
-                </div>
-
-                <div [ngClass]="getFormGroupClass(ementa.invalid,ementa.dirty)">
-                    <label for="inputEmenta" class="col-sm-2 control-label">Ementa</label>
-                    <div class="col-sm-10">
-                        <textarea [(ngModel)]="disciplina.ementa" rows="3" name="ementa" class="form-control"
-                            id="inputEmenta" #ementa="ngModel" required>
+        <div [ngClass]="getFormGroupClass(ementa.invalid,ementa.dirty)">
+          <label for="inputEmenta" class="col-sm-2 control-label">Ementa</label>
+          <div class="col-sm-10">
+            <textarea [(ngModel)]="disciplina.ementa" rows="3" name="ementa" class="form-control" id="inputEmenta"
+              #ementa="ngModel" required>
                             <span class="help-block" *ngIf="ementa.invalid && ementa.dirty">Ementa é obrigatória</span>
                           </textarea>
-                    </div>
-                </div>
+          </div>
+        </div>
 
-                <div [ngClass]="getFormGroupClass(objetivoGeral.invalid,objetivoGeral.dirty)">
-                    <label for="inputObjetivoGeral" class="col-sm-2 control-label">Objetivo Geral</label>
-                    <div class="col-sm-10">
-                        <textarea [(ngModel)]="disciplina.objetivoGeral" rows="5" name="objetivoGeral"
-                            class="form-control" id="inputObjetivoGeral" #objetivoGeral="ngModel" required>
+        <div [ngClass]="getFormGroupClass(objetivoGeral.invalid,objetivoGeral.dirty)">
+          <label for="inputObjetivoGeral" class="col-sm-2 control-label">Objetivo Geral</label>
+          <div class="col-sm-10">
+            <textarea [(ngModel)]="disciplina.objetivoGeral" rows="5" name="objetivoGeral" class="form-control"
+              id="inputObjetivoGeral" #objetivoGeral="ngModel" required>
                           <span class="help-block" *ngIf="objetivoGeral.invalid && objetivoGeral.dirty">Objetivo é obrigatória</span>
                         </textarea>
-                    </div>
-                </div>
+          </div>
+        </div>
 
-                <div [ngClass]="getFormGroupClass(objetivoEspecifico.invalid,objetivoEspecifico.dirty)">
-                    <label for="inputObjetivoEspecifico" class="col-sm-2 control-label">Objetivo Especifico</label>
-                    <div class="col-sm-10">
-                        <textarea [(ngModel)]="disciplina.objetivoEspecifico" rows="5" name="objetivoEspecifico"
-                            class="form-control" id="inputObjetivoEspecifico" #objetivoEspecifico="ngModel" required>
+        <div [ngClass]="getFormGroupClass(objetivoEspecifico.invalid,objetivoEspecifico.dirty)">
+          <label for="inputObjetivoEspecifico" class="col-sm-2 control-label">Objetivo Especifico</label>
+          <div class="col-sm-10">
+            <textarea [(ngModel)]="disciplina.objetivoEspecifico" rows="5" name="objetivoEspecifico"
+              class="form-control" id="inputObjetivoEspecifico" #objetivoEspecifico="ngModel" required>
                           <span class="help-block" *ngIf="objetivoEspecifico.invalid && objetivoEspecifico.dirty">Objetivo é obrigatória</span>
                         </textarea>
-                    </div>
-                </div>
+          </div>
+        </div>
 
-                <div [ngClass]="getFormGroupClass(habilidadeCompetencias.invalid,habilidadeCompetencias.dirty)">
-                    <label for="inputHabilidadeCompetencias" class="col-sm-2 control-label">Habilidade e
-                        Competencias</label>
-                    <div class="col-sm-10">
-                        <textarea [(ngModel)]="disciplina.habilidadeCompetencias" rows="5"
-                            name="habilidadeCompetencias" class="form-control" id="inputHabilidadeCompetencias"
-                            #habilidadeCompetencias="ngModel" required>
-                          <span class="help-block" *ngIf="habilidadeCompetencias.invalid && habilidadeCompetencias.dirty">Habilidade e Competencias é obrigatória</span>
+        <div [ngClass]="getFormGroupClass(habilidadeCompetencias.invalid,habilidadeCompetencias.dirty)">
+          <label for="inputHabilidadeCompetencias" class="col-sm-2 control-label">Habilidade e
+            Competencias</label>
+          <div class="col-sm-10">
+            <textarea [(ngModel)]="disciplina.habilidadeCompetencias" rows="5" name="habilidadeCompetencias"
+              class="form-control" id="inputHabilidadeCompetencias" #habilidadeCompetencias="ngModel" required>
+                          <span class="help-block"
+                                *ngIf="habilidadeCompetencias.invalid && habilidadeCompetencias.dirty">Habilidade e Competencias é obrigatória</span>
                           </textarea>
-                    </div>
-                </div>
+          </div>
+        </div>
 
-                <div [ngClass]="getFormGroupClass(conteudoProgramatico.invalid,conteudoProgramatico.dirty)">
-                    <label for="inputConteudoProgramatico" class="col-sm-2 control-label">Conteudo Programatico</label>
-                    <div class="col-sm-10">
-                        <textarea [(ngModel)]="disciplina.conteudoProgramatico" rows="5" name="conteudoProgramatico"
-                            class="form-control" id="inputConteudoProgramatico" #conteudoProgramatico="ngModel"
-                            required>
+        <div [ngClass]="getFormGroupClass(conteudoProgramatico.invalid,conteudoProgramatico.dirty)">
+          <label for="inputConteudoProgramatico" class="col-sm-2 control-label">Conteudo Programatico</label>
+          <div class="col-sm-10">
+            <textarea [(ngModel)]="disciplina.conteudoProgramatico" rows="5" name="conteudoProgramatico"
+              class="form-control" id="inputConteudoProgramatico" #conteudoProgramatico="ngModel" required>
                           <span class="help-block" *ngIf="conteudoProgramatico.invalid && conteudoProgramatico.dirty">Conteudo Programatico é obrigatória</span>
                           </textarea>
-                    </div>
-                </div>
+          </div>
+        </div>
 
-                <div [ngClass]="getFormGroupClass(procedimentosDidaticos.invalid,procedimentosDidaticos.dirty)">
-                    <label for="inputProcedimentosDidaticos" class="col-sm-2 control-label">Procedimentos
-                        Didaticos</label>
-                    <div class="col-sm-10">
-                        <textarea [(ngModel)]="disciplina.procedimentosDidaticos" rows="4"
-                            name="procedimentosDidaticos" class="form-control" id="inputProcedimentosDidaticos"
-                            #procedimentosDidaticos="ngModel" required>
-                          <span class="help-block" *ngIf="procedimentosDidaticos.invalid && procedimentosDidaticos.dirty">Procedimentos Didaticos é obrigatória</span>
+        <div [ngClass]="getFormGroupClass(procedimentosDidaticos.invalid,procedimentosDidaticos.dirty)">
+          <label for="inputProcedimentosDidaticos" class="col-sm-2 control-label">Procedimentos
+            Didaticos</label>
+          <div class="col-sm-10">
+            <textarea [(ngModel)]="disciplina.procedimentosDidaticos" rows="4" name="procedimentosDidaticos"
+              class="form-control" id="inputProcedimentosDidaticos" #procedimentosDidaticos="ngModel" required>
+                          <span class="help-block"
+                                *ngIf="procedimentosDidaticos.invalid && procedimentosDidaticos.dirty">Procedimentos Didaticos é obrigatória</span>
                             </textarea>
-                    </div>
-                </div>
+          </div>
+        </div>
 
-                <div [ngClass]="getFormGroupClass(atividadeIntegrativa.invalid,atividadeIntegrativa.dirty)">
-                    <label for="inputAtividadeIntegrativa" class="col-sm-2 control-label">Atividade Integrativa</label>
-                    <div class="col-sm-10">
-                        <input [(ngModel)]="disciplina.atividadeIntegrativa" name="atividadeIntegrativa"
-                            class="form-control" id="inputAtividadeIntegrativa" #atividadeIntegrativa="ngModel"
-                            required>
-                        <span class="help-block"
-                            *ngIf="atividadeIntegrativa.invalid && atividadeIntegrativa.dirty">Atividade
-                            Integrativa é obrigatória</span>
-                    </div>
-                </div>
+        <div [ngClass]="getFormGroupClass(atividadeIntegrativa.invalid,atividadeIntegrativa.dirty)">
+          <label for="inputAtividadeIntegrativa" class="col-sm-2 control-label">Atividade Integrativa</label>
+          <div class="col-sm-10">
+            <input [(ngModel)]="disciplina.atividadeIntegrativa" name="atividadeIntegrativa" class="form-control"
+              id="inputAtividadeIntegrativa" #atividadeIntegrativa="ngModel" required>
+            <span class="help-block" *ngIf="atividadeIntegrativa.invalid && atividadeIntegrativa.dirty">Atividade
+              Integrativa é obrigatória</span>
+          </div>
+        </div>
 
-                <div [ngClass]="getFormGroupClass(primeiraVA.invalid,primeiraVA.dirty)">
-                    <label for="inputPrimeiraVA" class="col-sm-2 control-label">Primeira VA</label>
-                    <div class="col-sm-10">
-                        <input [(ngModel)]="disciplina.primeiraVA" name="primeiraVA" class="form-control"
-                            id="inputPrimeiraVA" #primeiraVA="ngModel" required>
-                        <span class="help-block" *ngIf="primeiraVA.invalid && primeiraVA.dirty">Primeira VA é
-                            obrigatória</span>
-                    </div>
-                </div>
+        <div [ngClass]="getFormGroupClass(primeiraVA.invalid,primeiraVA.dirty)">
+          <label for="inputPrimeiraVA" class="col-sm-2 control-label">Primeira VA</label>
+          <div class="col-sm-10">
+            <input [(ngModel)]="disciplina.primeiraVA" name="primeiraVA" class="form-control" id="inputPrimeiraVA"
+              #primeiraVA="ngModel" required>
+            <span class="help-block" *ngIf="primeiraVA.invalid && primeiraVA.dirty">Primeira VA é
+              obrigatória</span>
+          </div>
+        </div>
 
-                <div [ngClass]="getFormGroupClass(segundaVA.invalid,segundaVA.dirty)">
-                    <label for="inputSegundaVA" class="col-sm-2 control-label">Segunda VA</label>
-                    <div class="col-sm-10">
-                        <input [(ngModel)]="disciplina.segundaVA" name="segundaVA" class="form-control"
-                            id="inputSegundaVA" #segundaVA="ngModel" required>
-                        <span class="help-block" *ngIf="segundaVA.invalid && segundaVA.dirty">Segunda VA é
-                            obrigatória</span>
-                    </div>
-                </div>
+        <div [ngClass]="getFormGroupClass(segundaVA.invalid,segundaVA.dirty)">
+          <label for="inputSegundaVA" class="col-sm-2 control-label">Segunda VA</label>
+          <div class="col-sm-10">
+            <input [(ngModel)]="disciplina.segundaVA" name="segundaVA" class="form-control" id="inputSegundaVA"
+              #segundaVA="ngModel" required>
+            <span class="help-block" *ngIf="segundaVA.invalid && segundaVA.dirty">Segunda VA é
+              obrigatória</span>
+          </div>
+        </div>
 
-                <div [ngClass]="getFormGroupClass(terceiraVA.invalid,terceiraVA.dirty)">
-                    <label for="inputTerceiraVA" class="col-sm-2 control-label">Terceira VA</label>
-                    <div class="col-sm-10">
-                        <input [(ngModel)]="disciplina.terceiraVA" name="terceiraVA" class="form-control"
-                            id="inputTerceiraVA" #terceiraVA="ngModel" required>
-                        <span class="help-block" *ngIf="terceiraVA.invalid && terceiraVA.dirty">Terceira VA é
-                            obrigatória</span>
-                    </div>
-                </div>
+        <div [ngClass]="getFormGroupClass(terceiraVA.invalid,terceiraVA.dirty)">
+          <label for="inputTerceiraVA" class="col-sm-2 control-label">Terceira VA</label>
+          <div class="col-sm-10">
+            <input [(ngModel)]="disciplina.terceiraVA" name="terceiraVA" class="form-control" id="inputTerceiraVA"
+              #terceiraVA="ngModel" required>
+            <span class="help-block" *ngIf="terceiraVA.invalid && terceiraVA.dirty">Terceira VA é
+              obrigatória</span>
+          </div>
+        </div>
 
-                <div [ngClass]="getFormGroupClass(bibliografiaBasica.invalid,bibliografiaBasica.dirty)">
-                    <label for="inputCibliografiaBasica" class="col-sm-2 control-label">Bibliografia Basica</label>
-                    <div class="col-sm-10">
-                        <textarea [(ngModel)]="disciplina.bibliografiaBasica" rows="5" name="bibliografiaBasica"
-                            class="form-control" id="inputBibliografiaBasica" #bibliografiaBasica="ngModel" required>
+        <div [ngClass]="getFormGroupClass(bibliografiaBasica.invalid,bibliografiaBasica.dirty)">
+          <label for="inputCibliografiaBasica" class="col-sm-2 control-label">Bibliografia Basica</label>
+          <div class="col-sm-10">
+            <textarea [(ngModel)]="disciplina.bibliografiaBasica" rows="5" name="bibliografiaBasica"
+              class="form-control" id="inputBibliografiaBasica" #bibliografiaBasica="ngModel" required>
                           <span class="help-block" *ngIf="bibliografiaBasica.invalid && bibliografiaBasica.dirty">Bibliografia Basica é obrigatória</span>
                             </textarea>
-                    </div>
-                </div>
+          </div>
+        </div>
 
-                <div [ngClass]="getFormGroupClass(bibliografiaComplementar.invalid,bibliografiaComplementar.dirty)">
-                    <label for="inputBibliografiaComplementar" class="col-sm-2 control-label">Bibliografia
-                        Complementar</label>
-                    <div class="col-sm-10">
-                        <textarea [(ngModel)]="disciplina.bibliografiaComplementar" rows="5"
-                            name="bibliografiaComplementar" class="form-control" id="inputBibliografiaComplementar"
-                            #bibliografiaComplementar="ngModel" required>
-                          <span class="help-block" *ngIf="bibliografiaComplementar.invalid && bibliografiaComplementar.dirty">Bibliografia Complementar é obrigatória</span>
+        <div [ngClass]="getFormGroupClass(bibliografiaComplementar.invalid,bibliografiaComplementar.dirty)">
+          <label for="inputBibliografiaComplementar" class="col-sm-2 control-label">Bibliografia
+            Complementar</label>
+          <div class="col-sm-10">
+            <textarea [(ngModel)]="disciplina.bibliografiaComplementar" rows="5" name="bibliografiaComplementar"
+              class="form-control" id="inputBibliografiaComplementar" #bibliografiaComplementar="ngModel" required>
+                          <span class="help-block"
+                                *ngIf="bibliografiaComplementar.invalid && bibliografiaComplementar.dirty">Bibliografia Complementar é obrigatória</span>
                             </textarea>
-                    </div>
-                </div>
+          </div>
+        </div>
 
-            </div>
+      </div>
 
-            <div class="box-footer">
-                <button [routerLink]="['/disciplina-list']" routerLinkActive="router-link-active"
-                    class="btn btn-danger pull-left">Cancelar</button>
-                <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right"
-                    routerLinkActive="router-link-active">Salvar</button>
-            </div>
-        </form>
-    </div>
+      <div class="box-footer">
+        <button [routerLink]="['/disciplina-list']" routerLinkActive="router-link-active"
+          class="btn btn-danger pull-left">Cancelar
+        </button>
+        <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right"
+          routerLinkActive="router-link-active">Salvar
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
