@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private fb: FormBuilder
-    ) {
+  ) {
     this.shared = SharedService.getInstance();
   }
 
@@ -52,6 +52,13 @@ export class LoginComponent implements OnInit {
 
   verificaValidTouched(campo) {
     return !this.loginForm.get(campo).valid && this.loginForm.get(campo).touched
+  }
+
+  verificaEmailInvalido() {
+    let campoEmail = this.loginForm.get('email');
+    if (campoEmail.errors) {
+      return campoEmail.errors['email'] && campoEmail.touched;
+    }
   }
 
   aplicaCssErro(campo): {} {

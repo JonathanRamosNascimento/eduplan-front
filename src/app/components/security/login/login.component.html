@@ -14,7 +14,9 @@
           <div class="col-sm-10">
             <input type="email" formControlName="email" class="form-control" id="inputEmail"
               placeholder="email@email.com" email>
-            <small class="error" *ngIf="verificaValidTouched('email')">Email é obrigatorio</small>
+            <small class="error" *ngIf="verificaValidTouched('email') && !verificaEmailInvalido('email')">Email é
+              obrigatorio</small>
+            <small class="error" *ngIf="verificaEmailInvalido('email')">Email inválido</small>
           </div>
         </div>
 
