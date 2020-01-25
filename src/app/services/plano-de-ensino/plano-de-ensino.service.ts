@@ -1,31 +1,31 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { EDUPLAN_API } from '../eduplan.api';
 import { PlanoDeEnsino } from '../../model/plano-de-ensino';
 
 @Injectable()
 export class PlanoDeEnsinoService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  createOrUpdate(planoDeEnsino: PlanoDeEnsino){
-    if(planoDeEnsino.id != null && planoDeEnsino.id != ''){
-      return this.http.put(`${EDUPLAN_API}/api/plano-de-ensino`,planoDeEnsino);
+  createOrUpdate(planoDeEnsino: PlanoDeEnsino) {
+    if (planoDeEnsino.id != null && planoDeEnsino.id != '') {
+      return this.http.put(`${EDUPLAN_API}/api/plano-de-ensino`, planoDeEnsino);
     } else {
       planoDeEnsino.id = null;
       return this.http.post(`${EDUPLAN_API}/api/plano-de-ensino`, planoDeEnsino);
     }
   }
 
-  findAll(page:number,count:number){
+  findAll(page: number, count: number) {
     return this.http.get(`${EDUPLAN_API}/api/plano-de-ensino/${page}/${count}`);
   }
 
-  findById(id:string){
+  findById(id: string) {
     return this.http.get(`${EDUPLAN_API}/api/plano-de-ensino/${id}`);
   }
 
-  delete(id:string){
+  delete(id: string) {
     return this.http.delete(`${EDUPLAN_API}/api/plano-de-ensino/${id}`);
   }
 }

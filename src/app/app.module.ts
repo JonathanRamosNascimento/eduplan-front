@@ -8,7 +8,7 @@ import { SharedService } from './services/shared.service';
 import { UserService } from './services/user/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -52,13 +52,14 @@ import { DisciplinaDetailComponent } from './components/disciplina-detail/discip
     ReactiveFormsModule
   ],
   providers: [
-    UserService, 
-    AuthGuard, 
+    UserService,
+    AuthGuard,
     SharedService,
     DialogService,
     PlanoDeEnsinoService,
     DisciplinaService,
-    { provide: HTTP_INTERCEPTORS,
+    {
+      provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
     },

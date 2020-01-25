@@ -13,30 +13,30 @@ import { DialogService } from '../../dialog.service';
 })
 export class UserListComponent implements OnInit {
 
-  page:number=0;
-  count:number = 12;
-  pages:Array<number>;
-  shared : SharedService;
-  message : {};
-  classCss : {};
-  listUser=[];
+  page: number = 0;
+  count: number = 12;
+  pages: Array<number>;
+  shared: SharedService;
+  message: {};
+  classCss: {};
+  listUser = [];
 
   constructor(
     private dialogService: DialogService,
     private userService: UserService,
-    private router: Router) { 
-      this.shared = SharedService.getInstance();
+    private router: Router) {
+    this.shared = SharedService.getInstance();
   }
 
   ngOnInit() {
-    this.findAll(this.page,this.count);
+    this.findAll(this.page, this.count);
   }
 
-  findAll(page:number,count:number){
-    this.userService.findAll(page,count).subscribe((responseApi:ResponseApi) => {
-        this.listUser = responseApi['data']['content'];
-        this.pages = new Array(responseApi['data']['totalPages']);
-    } , err => {
+  findAll(page: number, count: number) {
+    this.userService.findAll(page, count).subscribe((responseApi: ResponseApi) => {
+      this.listUser = responseApi['data']['content'];
+      this.pages = new Array(responseApi['data']['totalPages']);
+    }, err => {
       this.showMessage({
         type: 'error',
         text: err['error']['errors'][0]
@@ -45,54 +45,54 @@ export class UserListComponent implements OnInit {
 
   }
 
-  edit(id:string){
-    this.router.navigate(['/user-new',id]);
+  edit(id: string) {
+    this.router.navigate(['/user-new', id]);
   }
 
-  delete(id:string, nome: string){
+  delete(id: string, nome: string) {
     this.dialogService.confirm('Realmente deseja excluir o usuario ' + nome + ' ?')
-      .then((candelete:boolean) => {
-          if(candelete){
-            this.message = {};
-            this.userService.delete(id).subscribe((responseApi:ResponseApi) => {
-                this.showMessage({
-                  type: 'success',
-                  text: `Usuario apagado`
-                });
-                this.findAll(this.page,this.count);
-            } , err => {
-              this.showMessage({
-                type: 'error',
-                text: err['error']['errors'][0]
-              });
+      .then((candelete: boolean) => {
+        if (candelete) {
+          this.message = {};
+          this.userService.delete(id).subscribe((responseApi: ResponseApi) => {
+            this.showMessage({
+              type: 'success',
+              text: `Usuario apagado`
             });
-          }
+            this.findAll(this.page, this.count);
+          }, err => {
+            this.showMessage({
+              type: 'error',
+              text: err['error']['errors'][0]
+            });
+          });
+        }
       });
   }
 
-  setNextPage(event:any){
+  setNextPage(event: any) {
     event.preventDefault();
-    if(this.page+1 < this.pages.length){
-      this.page =  this.page +1;
-      this.findAll(this.page,this.count);
+    if (this.page + 1 < this.pages.length) {
+      this.page = this.page + 1;
+      this.findAll(this.page, this.count);
     }
   }
 
-  setPreviousPage(event:any){
+  setPreviousPage(event: any) {
     event.preventDefault();
-    if(this.page > 0){
-      this.page =  this.page - 1;
-      this.findAll(this.page,this.count);
+    if (this.page > 0) {
+      this.page = this.page - 1;
+      this.findAll(this.page, this.count);
     }
   }
 
-  setPage(i,event:any){
+  setPage(i, event: any) {
     event.preventDefault();
     this.page = i;
-    this.findAll(this.page,this.count);
+    this.findAll(this.page, this.count);
   }
 
-  private showMessage(message: {type: string, text: string}): void {
+  private showMessage(message: { type: string, text: string }): void {
     this.message = message;
     this.buildClasses(message.type);
     setTimeout(() => {
@@ -104,7 +104,7 @@ export class UserListComponent implements OnInit {
     this.classCss = {
       'alert': true
     }
-    this.classCss['alert-'+type] =  true;
+    this.classCss['alert-' + type] = true;
   }
-  
+
 }

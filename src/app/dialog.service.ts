@@ -8,5 +8,4 @@ export class DialogService {
       return resolve(window.confirm(message || 'Confirm ?'));
     });
   }
-
 }

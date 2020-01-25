@@ -117,7 +117,8 @@
           <label for="inputObjetivoGeral" class="col-sm-2 control-label">Objetivo Geral</label>
           <div class="col-sm-10">
             <textarea [(ngModel)]="planoDeEnsino.objetivoGeral" rows="5" name="objetivoGeral" class="form-control"
-              id="inputObjetivoGeral" #objetivoGeral="ngModel" required [disabled]="planoDeEnsino.objetivoGeral != null">
+              id="inputObjetivoGeral" #objetivoGeral="ngModel" required
+              [disabled]="planoDeEnsino.objetivoGeral != null">
             <span class="help-block" *ngIf="objetivoGeral.invalid && objetivoGeral.dirty">Objetivo é obrigatória</span>
           </textarea>
           </div>
@@ -127,7 +128,8 @@
           <label for="inputObjetivoEspecifico" class="col-sm-2 control-label">Objetivo Especifico</label>
           <div class="col-sm-10">
             <textarea [(ngModel)]="planoDeEnsino.objetivoEspecifico" rows="5" name="objetivoEspecifico"
-              class="form-control" id="inputObjetivoEspecifico" #objetivoEspecifico="ngModel" required [disabled]="planoDeEnsino.objetivoEspecifico != null">
+              class="form-control" id="inputObjetivoEspecifico" #objetivoEspecifico="ngModel" required
+              [disabled]="planoDeEnsino.objetivoEspecifico != null">
             <span class="help-block" *ngIf="objetivoEspecifico.invalid && objetivoEspecifico.dirty">Objetivo é obrigatória</span>
           </textarea>
           </div>
@@ -137,7 +139,8 @@
           <label for="inputHabilidadeCompetencias" class="col-sm-2 control-label">Habilidade e Competencias</label>
           <div class="col-sm-10">
             <textarea [(ngModel)]="planoDeEnsino.habilidadeCompetencias" rows="5" name="habilidadeCompetencias"
-              class="form-control" id="inputHabilidadeCompetencias" #habilidadeCompetencias="ngModel" required [disabled]="planoDeEnsino.habilidadeCompetencias != null">
+              class="form-control" id="inputHabilidadeCompetencias" #habilidadeCompetencias="ngModel" required
+              [disabled]="planoDeEnsino.habilidadeCompetencias != null">
             <span class="help-block" *ngIf="habilidadeCompetencias.invalid && habilidadeCompetencias.dirty">Habilidade e Competencias é obrigatória</span>
             </textarea>
           </div>
@@ -147,7 +150,8 @@
           <label for="inputConteudoProgramatico" class="col-sm-2 control-label">Conteudo Programatico</label>
           <div class="col-sm-10">
             <textarea [(ngModel)]="planoDeEnsino.conteudoProgramatico" rows="5" name="conteudoProgramatico"
-              class="form-control" id="inputConteudoProgramatico" #conteudoProgramatico="ngModel" required [disabled]="planoDeEnsino.conteudoProgramatico != null">
+              class="form-control" id="inputConteudoProgramatico" #conteudoProgramatico="ngModel" required
+              [disabled]="planoDeEnsino.conteudoProgramatico != null">
             <span class="help-block" *ngIf="conteudoProgramatico.invalid && conteudoProgramatico.dirty">Conteudo Programatico é obrigatória</span>
             </textarea>
           </div>
@@ -157,7 +161,8 @@
           <label for="inputProcedimentosDidaticos" class="col-sm-2 control-label">Procedimentos Didaticos</label>
           <div class="col-sm-10">
             <textarea [(ngModel)]="planoDeEnsino.procedimentosDidaticos" rows="4" name="procedimentosDidaticos"
-              class="form-control" id="inputProcedimentosDidaticos" #procedimentosDidaticos="ngModel" required [disabled]="planoDeEnsino.procedimentosDidaticos != null">
+              class="form-control" id="inputProcedimentosDidaticos" #procedimentosDidaticos="ngModel" required
+              [disabled]="planoDeEnsino.procedimentosDidaticos != null">
             <span class="help-block" *ngIf="procedimentosDidaticos.invalid && procedimentosDidaticos.dirty">Procedimentos Didaticos é obrigatória</span>
               </textarea>
           </div>
@@ -167,7 +172,8 @@
           <label for="inputAtividadeIntegrativa" class="col-sm-2 control-label">Atividade Integrativa</label>
           <div class="col-sm-10">
             <input [(ngModel)]="planoDeEnsino.atividadeIntegrativa" name="atividadeIntegrativa" class="form-control"
-              id="inputAtividadeIntegrativa" #atividadeIntegrativa="ngModel" required [disabled]="planoDeEnsino.atividadeIntegrativa != null">
+              id="inputAtividadeIntegrativa" #atividadeIntegrativa="ngModel" required
+              [disabled]="planoDeEnsino.atividadeIntegrativa != null">
             <span class="help-block" *ngIf="atividadeIntegrativa.invalid && atividadeIntegrativa.dirty">Atividade
               Integrativa é obrigatória</span>
           </div>
@@ -176,7 +182,8 @@
         <div [ngClass]="getFormGroupClass(primeiraVA.invalid,primeiraVA.dirty)">
           <label for="inputPrimeiraVA" class="col-sm-2 control-label">Primeira VA</label>
           <div class="col-sm-10">
-            <input [(ngModel)]="planoDeEnsino.primeiraVA" name="primeiraVA" class="form-control" id="inputPrimeiraVA" #primeiraVA="ngModel" required [disabled]="planoDeEnsino.primeiraVA != null">
+            <input [(ngModel)]="planoDeEnsino.primeiraVA" name="primeiraVA" class="form-control" id="inputPrimeiraVA"
+              #primeiraVA="ngModel" required [disabled]="planoDeEnsino.primeiraVA != null">
             <span class="help-block" *ngIf="primeiraVA.invalid && primeiraVA.dirty">Primeira VA é obrigatória</span>
           </div>
         </div>
@@ -193,7 +200,8 @@
         <div [ngClass]="getFormGroupClass(terceiraVA.invalid,terceiraVA.dirty)">
           <label for="inputTerceiraVA" class="col-sm-2 control-label">Terceira VA</label>
           <div class="col-sm-10">
-            <input [(ngModel)]="planoDeEnsino.terceiraVA" name="terceiraVA" class="form-control" id="inputTerceiraVA" #terceiraVA="ngModel" required [disabled]="planoDeEnsino.terceiraVA != null">
+            <input [(ngModel)]="planoDeEnsino.terceiraVA" name="terceiraVA" class="form-control" id="inputTerceiraVA"
+              #terceiraVA="ngModel" required [disabled]="planoDeEnsino.terceiraVA != null">
             <span class="help-block" *ngIf="terceiraVA.invalid && terceiraVA.dirty">Terceira VA é obrigatória</span>
           </div>
         </div>
@@ -202,7 +210,8 @@
           <label for="inputCibliografiaBasica" class="col-sm-2 control-label">Bibliografia Basica</label>
           <div class="col-sm-10">
             <textarea [(ngModel)]="planoDeEnsino.bibliografiaBasica" rows="5" name="bibliografiaBasica"
-              class="form-control" id="inputBibliografiaBasica" #bibliografiaBasica="ngModel" required [disabled]="planoDeEnsino.bibliografiaBasica != null">
+              class="form-control" id="inputBibliografiaBasica" #bibliografiaBasica="ngModel" required
+              [disabled]="planoDeEnsino.bibliografiaBasica != null">
             <span class="help-block" *ngIf="bibliografiaBasica.invalid && bibliografiaBasica.dirty">Bibliografia Basica é obrigatória</span>
               </textarea>
           </div>
@@ -213,7 +222,7 @@
           <div class="col-sm-10">
             <textarea [(ngModel)]="planoDeEnsino.bibliografiaComplementar" rows="5" name="bibliografiaComplementar"
               class="form-control" id="inputBibliografiaComplementar" #bibliografiaComplementar="ngModel" required
-               [disabled]="planoDeEnsino.bibliografiaComplementar != null">
+              [disabled]="planoDeEnsino.bibliografiaComplementar != null">
             <span class="help-block" *ngIf="bibliografiaComplementar.invalid && bibliografiaComplementar.dirty">Bibliografia Complementar é obrigatória</span>
               </textarea>
           </div>

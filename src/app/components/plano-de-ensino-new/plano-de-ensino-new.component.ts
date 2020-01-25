@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class PlanoDeEnsinoNewComponent implements OnInit {
 
-  @ViewChild("form", {static: true})
+  @ViewChild("form", { static: true })
   form: NgForm;
 
   planoDeEnsino = new PlanoDeEnsino();

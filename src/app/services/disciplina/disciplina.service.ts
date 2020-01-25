@@ -6,10 +6,10 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class DisciplinaService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  createOrUpdate(disciplina: Disciplina){
-    if(disciplina.id != null && disciplina.id != '') {
+  createOrUpdate(disciplina: Disciplina) {
+    if (disciplina.id != null && disciplina.id != '') {
       return this.http.put(`${EDUPLAN_API}/api/disciplina`, disciplina);
     } else {
       disciplina.id = null;

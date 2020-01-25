@@ -13,7 +13,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class DisciplinaDetailComponent implements OnInit {
 
-  @ViewChild("form", {static: true})
+  @ViewChild("form", { static: true })
   form: NgForm;
 
   disciplina = new Disciplina();
