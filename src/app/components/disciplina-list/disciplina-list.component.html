@@ -12,12 +12,14 @@
         <table class="table table-bordered">
           <tr>
             <th>Nome da Disciplina</th>
+            <th>Carga Horaria Total</th>
             <th style="width: 10px">&nbsp;</th>
             <th style="width: 10px">&nbsp;</th>
             <th style="width: 10px">&nbsp;</th>
           </tr>
           <tr *ngFor="let di of listDisciplina">
             <td>{{di.nome}}</td>
+            <td>{{di.chtotal}}</td>
             <td>
               <button class="btn btn-primary" (click)="edit(di.id)">Editar</button>
             </td>

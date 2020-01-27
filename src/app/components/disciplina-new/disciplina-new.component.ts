@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DisciplinaService } from './../../services/disciplina/disciplina.service';
 import { SharedService } from './../../services/shared.service';
 import { Disciplina } from './../../model/disciplina';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
@@ -13,10 +13,25 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class DisciplinaNewComponent implements OnInit {
 
-  @ViewChild("form", { static: true })
-  form: NgForm;
-
-  disciplina = new Disciplina();
+  disciplinaForm: FormGroup = this.fb.group({
+    'id': [null],
+    'nome': ['', [Validators.required]],
+    'chteorica': [null, [Validators.required]],
+    'chpratica': [null, [Validators.required]],
+    'chtotal': [null, [Validators.required]],
+    'ementa': ['', [Validators.required]],
+    'objetivoGeral': ['', [Validators.required]],
+    'objetivoEspecifico': ['', [Validators.required]],
+    'habilidadeCompetencias': ['', [Validators.required]],
+    'conteudoProgramatico': ['', [Validators.required]],
+    'procedimentosDidaticos': ['', [Validators.required]],
+    'atividadeIntegrativa': ['', [Validators.required]],
+    'primeiraVA': ['', [Validators.required]],
+    'segundaVA': ['', [Validators.required]],
+    'terceiraVA': ['', [Validators.required]],
+    'bibliografiaBasica': ['', [Validators.required]],
+    'bibliografiaComplementar': ['', [Validators.required]],
+  });
   shared: SharedService;
   message: {};
   classCss: {};
@@ -24,13 +39,14 @@ export class DisciplinaNewComponent implements OnInit {
   constructor(
     private disciplinaService: DisciplinaService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) {
     this.shared = SharedService.getInstance();
   }
 
   ngOnInit() {
-    let id: string = this.route.snapshot.params['id'];
+    const id: string = this.route.snapshot.params['id'];
     if (id != undefined) {
       this.findById(id);
     }
@@ -38,7 +54,9 @@ export class DisciplinaNewComponent implements OnInit {
 
   findById(id: string) {
     this.disciplinaService.findById(id).subscribe((responseApi: ResponseApi) => {
-      this.disciplina = responseApi.data;
+      let data = responseApi.data;
+      this.disciplinaForm.setValue(data);
+      console.log(data);
     }, err => {
       this.showMessage({
         type: 'error',
@@ -49,10 +67,8 @@ export class DisciplinaNewComponent implements OnInit {
 
   register() {
     this.message = {};
-    this.disciplinaService.createOrUpdate(this.disciplina).subscribe((responseApi: ResponseApi) => {
-      this.disciplina = new Disciplina();
-      let disciplina: Disciplina = responseApi.data;
-      this.form.resetForm();
+    this.disciplinaService.createOrUpdate(this.disciplinaForm.value).subscribe((responseApi: ResponseApi) => {
+      this.disciplinaForm.reset();
       this.router.navigate(['/disciplina-list']);
     }, err => {
       this.showMessage({
@@ -62,11 +78,21 @@ export class DisciplinaNewComponent implements OnInit {
     });
   }
 
-  getFormGroupClass(isInvalid: boolean, isDirty: boolean): {} {
+  verificaValidTouched(campo) {
+    return !this.disciplinaForm.get(campo).valid && this.disciplinaForm.get(campo).touched
+  }
+
+  verificaEmailInvalido() {
+    let campoEmail = this.disciplinaForm.get('email');
+    if (campoEmail.errors) {
+      return campoEmail.errors['email'] && campoEmail.touched;
+    }
+  }
+
+  aplicaCssErro(campo): {} {
     return {
-      'form-group': true,
-      'has-error': isInvalid && isDirty,
-      'has-success': !isInvalid && isDirty
+      'has-error': this.verificaValidTouched(campo),
+      'has-feedback': this.verificaValidTouched(campo)
     };
   }
 
@@ -81,7 +107,7 @@ export class DisciplinaNewComponent implements OnInit {
   private buildClasses(type: string): void {
     this.classCss = {
       'alert': true
-    }
+    };
     this.classCss['alert-' + type] = true;
   }
 }
