@@ -10,39 +10,33 @@
 
       <div class="box-body" style="overflow: auto; max-height: 650px; overflow-x: hidden;">
 
-        <div class="form-group" [ngClass]="aplicaCssErro('nome')">
-          <label for="inputNome" class="col-sm-2 control-label">Nome da Disciplina</label>
-          <div class="col-sm-10">
+        <div class="row">
+          <div class="form-group col-md-5" [ngClass]="aplicaCssErro('nome')">
+            <label for="inputNome">Nome da Disciplina</label>
             <input type="text" formControlName="nome" autocomplete="off" name="nome" class="form-control"
               id="inputNome">
             <small class="error" *ngIf="disciplinaForm.get('nome').errors && disciplinaForm.get('nome').touched">Nome
               das disciplina é obrigatório</small>
           </div>
-        </div>
 
-        <div class="form-group" [ngClass]="aplicaCssErro('chteorica')">
-          <label for="inputChTeorica" class="col-sm-2 control-label">Carga Horaria Teorica</label>
-          <div class="col-sm-10">
+          <div class="form-group col-md-2" [ngClass]="aplicaCssErro('chteorica')">
+            <label for="inputChTeorica">Carga/H Teorica</label>
             <input type="number" formControlName="chteorica" name="chteorica" class="form-control" id="inputChTeorica">
             <small class="error"
               *ngIf="disciplinaForm.get('chteorica').errors && disciplinaForm.get('chteorica').touched">Carga
               Horária Teórica é obrigatória</small>
           </div>
-        </div>
 
-        <div class="form-group" [ngClass]="aplicaCssErro('chpratica')">
-          <label for="inputChPratica" class="col-sm-2 control-label">Carga Horaria Pratica</label>
-          <div class="col-sm-10">
+          <div class="form-group col-md-2" [ngClass]="aplicaCssErro('chpratica')">
+            <label for="inputChPratica">Carga/H Pratica</label>
             <input type="number" formControlName="chpratica" name="chpratica" class="form-control" id="inputChPratica">
             <small class="error"
               *ngIf="disciplinaForm.get('chpratica').errors && disciplinaForm.get('chpratica').touched">Carga
               Horária Prática é obrigatória</small>
           </div>
-        </div>
 
-        <div class="form-group" [ngClass]="aplicaCssErro('chtotal')">
-          <label for="inputChTotal" class="col-sm-2 control-label">Carga Horaria Total</label>
-          <div class="col-sm-10">
+          <div class="form-group col-md-2" [ngClass]="aplicaCssErro('chtotal')">
+            <label for="inputChTotal">Carga/H Total</label>
             <input type="number" formControlName="chtotal" name="chtotal" class="form-control" id="inputChTotal">
             <small class="error"
               *ngIf="disciplinaForm.get('chtotal').errors && disciplinaForm.get('chtotal').touched">Carga
@@ -50,23 +44,21 @@
           </div>
         </div>
 
-        <div class="form-group" [ngClass]="aplicaCssErro('ementa')">
-          <label for="inputEmenta" class="col-sm-2 control-label">Ementa</label>
-          <div class="col-sm-10">
+        <div class="row">
+          <div class="form-group col-md-6" [ngClass]="aplicaCssErro('ementa')">
+            <label for="inputEmenta">Ementa</label>
             <textarea formControlName="ementa" rows="3" name="ementa" class="form-control" id="inputEmenta">
-                          </textarea>
+                            </textarea>
             <small class="error"
               *ngIf="disciplinaForm.get('ementa').errors && disciplinaForm.get('ementa').touched">Ementa é
               obrigatória</small>
           </div>
-        </div>
 
-        <div class="form-group" [ngClass]="aplicaCssErro('objetivoGeral')">
-          <label for="inputObjetivoGeral" class="col-sm-2 control-label">Objetivo Geral</label>
-          <div class="col-sm-10">
-            <textarea formControlName="objetivoGeral" rows="5" name="objetivoGeral" class="form-control"
+          <div class="form-group col-md-5" [ngClass]="aplicaCssErro('objetivoGeral')">
+            <label for="inputObjetivoGeral">Objetivo Geral</label>
+            <textarea formControlName="objetivoGeral" rows="3" name="objetivoGeral" class="form-control"
               id="inputObjetivoGeral">
-                        </textarea>
+                          </textarea>
             <small class="error"
               *ngIf="disciplinaForm.get('objetivoGeral').errors && disciplinaForm.get('objetivoGeral').touched">Objetivo
               Geral é
@@ -74,26 +66,24 @@
           </div>
         </div>
 
-        <div class="form-group" [ngClass]="aplicaCssErro('objetivoEspecifico')">
-          <label for="inputObjetivoEspecifico" class="col-sm-2 control-label">Objetivo Específico</label>
-          <div class="col-sm-10">
-            <textarea formControlName="objetivoEspecifico" rows="5" name="objetivoEspecifico" class="form-control"
+        <div class="row">
+          <div class="form-group col-md-6" [ngClass]="aplicaCssErro('objetivoEspecifico')">
+            <label for="inputObjetivoEspecifico">Objetivo Específico</label>
+            <textarea formControlName="objetivoEspecifico" rows="3" name="objetivoEspecifico" class="form-control"
               id="inputObjetivoEspecifico">
-                        </textarea>
+                          </textarea>
             <small class="error"
               *ngIf="disciplinaForm.get('objetivoEspecifico').errors && disciplinaForm.get('objetivoEspecifico').touched">Objetivo
               Específico é
               obrigatório</small>
           </div>
-        </div>
 
-        <div class="form-group" [ngClass]="aplicaCssErro('habilidadeCompetencias')">
-          <label for="inputHabilidadeCompetencias" class="col-sm-2 control-label">Habilidade e
-            Competências</label>
-          <div class="col-sm-10">
-            <textarea formControlName="habilidadeCompetencias" rows="5" name="habilidadeCompetencias"
+          <div class="form-group col-md-5" [ngClass]="aplicaCssErro('habilidadeCompetencias')">
+            <label for="inputHabilidadeCompetencias">Habilidade e
+              Competências</label>
+            <textarea formControlName="habilidadeCompetencias" rows="3" name="habilidadeCompetencias"
               class="form-control" id="inputHabilidadeCompetencias">
-                          </textarea>
+                            </textarea>
             <small class="error"
               *ngIf="disciplinaForm.get('habilidadeCompetencias').errors && disciplinaForm.get('habilidadeCompetencias').touched">Habilidade
               e
@@ -102,26 +92,24 @@
           </div>
         </div>
 
-        <div class="form-group" [ngClass]="aplicaCssErro('conteudoProgramatico')">
-          <label for="inputConteudoProgramatico" class="col-sm-2 control-label">Conteúdo Programático</label>
-          <div class="col-sm-10">
-            <textarea formControlName="conteudoProgramatico" rows="5" name="conteudoProgramatico" class="form-control"
+        <div class="row">
+          <div class="form-group col-md-6" [ngClass]="aplicaCssErro('conteudoProgramatico')">
+            <label for="inputConteudoProgramatico">Conteúdo Programático</label>
+            <textarea formControlName="conteudoProgramatico" rows="3" name="conteudoProgramatico" class="form-control"
               id="inputConteudoProgramatico">
-                          </textarea>
+                            </textarea>
             <small class="error"
               *ngIf="disciplinaForm.get('conteudoProgramatico').errors && disciplinaForm.get('conteudoProgramatico').touched">Conteúdo
               Programático é
               obrigatório</small>
           </div>
-        </div>
 
-        <div class="form-group" [ngClass]="aplicaCssErro('procedimentosDidaticos')">
-          <label for="inputProcedimentosDidaticos" class="col-sm-2 control-label">Procedimentos
-            Didáticos</label>
-          <div class="col-sm-10">
-            <textarea formControlName="procedimentosDidaticos" rows="4" name="procedimentosDidaticos"
+          <div class="form-group col-md-5" [ngClass]="aplicaCssErro('procedimentosDidaticos')">
+            <label for="inputProcedimentosDidaticos">Procedimentos
+              Didáticos</label>
+            <textarea formControlName="procedimentosDidaticos" rows="3" name="procedimentosDidaticos"
               class="form-control" id="inputProcedimentosDidaticos">
-                            </textarea>
+                              </textarea>
             <small class="error"
               *ngIf="disciplinaForm.get('procedimentosDidaticos').errors && disciplinaForm.get('procedimentosDidaticos').touched">Procedimentos
               Didáticos é
@@ -129,9 +117,9 @@
           </div>
         </div>
 
-        <div class="form-group" [ngClass]="aplicaCssErro('atividadeIntegrativa')">
-          <label for="inputAtividadeIntegrativa" class="col-sm-2 control-label">Atividade Integrativa</label>
-          <div class="col-sm-10">
+        <div class="row">
+          <div class="form-group col-md-6" [ngClass]="aplicaCssErro('atividadeIntegrativa')">
+            <label for="inputAtividadeIntegrativa">Atividade Integrativa</label>
             <input formControlName="atividadeIntegrativa" name="atividadeIntegrativa" class="form-control"
               id="inputAtividadeIntegrativa">
             <small class="error"
@@ -139,11 +127,9 @@
               Integrativa é
               obrigatório</small>
           </div>
-        </div>
 
-        <div class="form-group" [ngClass]="aplicaCssErro('primeiraVA')">
-          <label for="inputPrimeiraVA" class="col-sm-2 control-label">Primeira VA</label>
-          <div class="col-sm-10">
+          <div class="form-group col-md-5" [ngClass]="aplicaCssErro('primeiraVA')">
+            <label for="inputPrimeiraVA">Primeira VA</label>
             <input type="text" formControlName="primeiraVA" name="primeiraVA" class="form-control" id="inputPrimeiraVA">
             <small class="error"
               *ngIf="disciplinaForm.get('primeiraVA').errors && disciplinaForm.get('primeiraVA').touched">Primeira VA é
@@ -151,19 +137,17 @@
           </div>
         </div>
 
-        <div class="form-group" [ngClass]="aplicaCssErro('segundaVA')">
-          <label for="inputSegundaVA" class="col-sm-2 control-label">Segunda VA</label>
-          <div class="col-sm-10">
+        <div class="row">
+          <div class="form-group col-md-6" [ngClass]="aplicaCssErro('segundaVA')">
+            <label for="inputSegundaVA">Segunda VA</label>
             <input type="text" formControlName="segundaVA" name="segundaVA" class="form-control" id="inputSegundaVA">
             <small class="error"
               *ngIf="disciplinaForm.get('segundaVA').errors && disciplinaForm.get('segundaVA').touched">Segunda VA é
               obrigatória</small>
           </div>
-        </div>
 
-        <div class="form-group" [ngClass]="aplicaCssErro('terceiraVA')">
-          <label for="inputTerceiraVA" class="col-sm-2 control-label">Terceira VA</label>
-          <div class="col-sm-10">
+          <div class="form-group col-md-5" [ngClass]="aplicaCssErro('terceiraVA')">
+            <label for="inputTerceiraVA">Terceira VA</label>
             <input type="text" formControlName="terceiraVA" name="terceiraVA" class="form-control" id="inputTerceiraVA">
             <small class="error"
               *ngIf="disciplinaForm.get('terceiraVA').errors && disciplinaForm.get('terceiraVA').touched">Terceira VA é
@@ -171,26 +155,24 @@
           </div>
         </div>
 
-        <div class="form-group" [ngClass]="aplicaCssErro('bibliografiaBasica')">
-          <label for="inputCibliografiaBasica" class="col-sm-2 control-label">Bibliografia Básica</label>
-          <div class="col-sm-10">
-            <textarea formControlName="bibliografiaBasica" rows="5" name="bibliografiaBasica" class="form-control"
+        <div class="row">
+          <div class="form-group col-md-6" [ngClass]="aplicaCssErro('bibliografiaBasica')">
+            <label for="inputCibliografiaBasica">Bibliografia Básica</label>
+            <textarea formControlName="bibliografiaBasica" rows="3" name="bibliografiaBasica" class="form-control"
               id="inputCibliografiaBasica">
-                            </textarea>
+                              </textarea>
             <small class="error"
               *ngIf="disciplinaForm.get('bibliografiaBasica').errors && disciplinaForm.get('bibliografiaBasica').touched">Bibliografia
               Básica é
               obrigatória</small>
           </div>
-        </div>
 
-        <div class="form-group" [ngClass]="aplicaCssErro('bibliografiaComplementar')">
-          <label for="inputBibliografiaComplementar" class="col-sm-2 control-label">Bibliografia
-            Complementar</label>
-          <div class="col-sm-10">
-            <textarea formControlName="bibliografiaComplementar" rows="5" name="bibliografiaComplementar"
+          <div class="form-group col-md-5" [ngClass]="aplicaCssErro('bibliografiaComplementar')">
+            <label for="inputBibliografiaComplementar">Bibliografia
+              Complementar</label>
+            <textarea formControlName="bibliografiaComplementar" rows="3" name="bibliografiaComplementar"
               class="form-control" id="inputBibliografiaComplementar">
-                            </textarea>
+                              </textarea>
             <small class="error"
               *ngIf="disciplinaForm.get('bibliografiaComplementar').errors && disciplinaForm.get('bibliografiaComplementar').touched">Bibliografia
               Complementar é

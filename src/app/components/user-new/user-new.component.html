@@ -60,6 +60,7 @@
         </div>
       </div>
       <div class="box-footer">
+        <button [routerLink]="['/user-list']" routerLinkActive="router-link-active" class="btn btn-danger pull-left">Cancelar</button>
         <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Salvar</button>
       </div>
     </form>

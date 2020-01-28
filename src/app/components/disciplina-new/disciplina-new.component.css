@@ -1,6 +1,12 @@
 .error {
-  color: white;
-  font-size: 12px;
-  padding: 5px;
-  background: #eb583c;
+  color: red;
+  font-size: 11px;
+}
+
+.col-md-5, .col-md-2, .col-md-6 {
+  margin: 1px;
+}
+
+.row {
+  margin-top: 2px;
 }

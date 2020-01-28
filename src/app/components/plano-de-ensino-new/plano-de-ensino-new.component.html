@@ -33,7 +33,7 @@
           </div>
         </div>
 
-        <div [ngClass]="getFormGroupClass(chteorica.invalid,chteorica.dirty)">
+        <!-- <div [ngClass]="getFormGroupClass(chteorica.invalid,chteorica.dirty)">
           <label for="inputChTeorica" class="col-sm-2 control-label">Carga Horaria Teorica</label>
           <div class="col-sm-10">
             <input [(ngModel)]="planoDeEnsino.chteorica" name="chteorica" class="form-control" id="inputChTeorica"
@@ -60,7 +60,7 @@
               #chtotal="ngModel" required [disabled]="planoDeEnsino.chtotal != null">
             <span class="help-block" *ngIf="chtotal.invalid && chtotal.dirty">Carga Horaria Total é obrigatória</span>
           </div>
-        </div>
+        </div> -->
 
         <div [ngClass]="getFormGroupClass(periodo.invalid,periodo.dirty)">
           <label for="inputPeriodo" class="col-sm-2 control-label">Periodo</label>
@@ -103,7 +103,7 @@
           </div>
         </div>
 
-        <div [ngClass]="getFormGroupClass(ementa.invalid,ementa.dirty)">
+        <!-- <div [ngClass]="getFormGroupClass(ementa.invalid,ementa.dirty)">
           <label for="inputEmenta" class="col-sm-2 control-label">Ementa</label>
           <div class="col-sm-10">
             <textarea [(ngModel)]="planoDeEnsino.ementa" rows="3" name="ementa" class="form-control" id="inputEmenta"
@@ -226,7 +226,7 @@
             <span class="help-block" *ngIf="bibliografiaComplementar.invalid && bibliografiaComplementar.dirty">Bibliografia Complementar é obrigatória</span>
               </textarea>
           </div>
-        </div>
+        </div> -->
 
       </div>
       <div class="box-footer">
