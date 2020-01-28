@@ -163,31 +163,31 @@ export class PlanoDeEnsinoDetailComponent implements OnInit {
     });
   }
 
-  register() {
-    this.message = {};
-    this.planoDeEnsinoService.createOrUpdate(this.planoDeEnsino).subscribe((responseApi: ResponseApi) => {
-      this.planoDeEnsino = new PlanoDeEnsino();
-      let ticket: PlanoDeEnsino = responseApi.data;
-      this.form.resetForm();
-      this.showMessage({
-        type: 'success',
-        text: `Registered ${ticket.disciplina} successfully`
-      });
-    }, err => {
-      this.showMessage({
-        type: 'error',
-        text: err['error']['errors'][0]
-      });
-    });
-  }
+  // register() {
+  //   this.message = {};
+  //   this.planoDeEnsinoService.createOrUpdate(this.planoDeEnsino).subscribe((responseApi: ResponseApi) => {
+  //     this.planoDeEnsino = new PlanoDeEnsino();
+  //     let ticket: PlanoDeEnsino = responseApi.data;
+  //     this.form.resetForm();
+  //     this.showMessage({
+  //       type: 'success',
+  //       text: `Registered ${ticket.disciplina} successfully`
+  //     });
+  //   }, err => {
+  //     this.showMessage({
+  //       type: 'error',
+  //       text: err['error']['errors'][0]
+  //     });
+  //   });
+  // }
 
-  getFormGroupClass(isInvalid: boolean, isDirty: boolean): {} {
-    return {
-      'form-group': true,
-      'has-error': isInvalid && isDirty,
-      'has-success': !isInvalid && isDirty
-    };
-  }
+  // getFormGroupClass(isInvalid: boolean, isDirty: boolean): {} {
+  //   return {
+  //     'form-group': true,
+  //     'has-error': isInvalid && isDirty,
+  //     'has-success': !isInvalid && isDirty
+  //   };
+  // }
 
   private showMessage(message: { type: string, text: string }): void {
     this.message = message;
