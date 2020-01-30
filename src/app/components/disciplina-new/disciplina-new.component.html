@@ -15,32 +15,32 @@
             <label for="inputNome">Nome da Disciplina</label>
             <input type="text" formControlName="nome" autocomplete="off" name="nome" class="form-control"
               id="inputNome">
-            <small class="error" *ngIf="disciplinaForm.get('nome').errors && disciplinaForm.get('nome').touched">Nome
-              das disciplina é obrigatório</small>
+            <small class="error" *ngIf="disciplinaForm.get('nome').errors && disciplinaForm.get('nome').touched">Campo
+              obrigatório.</small>
           </div>
 
           <div class="form-group col-md-2" [ngClass]="aplicaCssErro('chteorica')">
             <label for="inputChTeorica">Carga/H Teorica</label>
             <input type="number" formControlName="chteorica" name="chteorica" class="form-control" id="inputChTeorica">
             <small class="error"
-              *ngIf="disciplinaForm.get('chteorica').errors && disciplinaForm.get('chteorica').touched">Carga
-              Horária Teórica é obrigatória</small>
+              *ngIf="disciplinaForm.get('chteorica').errors && disciplinaForm.get('chteorica').touched">Campo
+              obrigatório.</small>
           </div>
 
           <div class="form-group col-md-2" [ngClass]="aplicaCssErro('chpratica')">
             <label for="inputChPratica">Carga/H Pratica</label>
             <input type="number" formControlName="chpratica" name="chpratica" class="form-control" id="inputChPratica">
             <small class="error"
-              *ngIf="disciplinaForm.get('chpratica').errors && disciplinaForm.get('chpratica').touched">Carga
-              Horária Prática é obrigatória</small>
+              *ngIf="disciplinaForm.get('chpratica').errors && disciplinaForm.get('chpratica').touched">Campo
+              obrigatório.</small>
           </div>
 
           <div class="form-group col-md-2" [ngClass]="aplicaCssErro('chtotal')">
             <label for="inputChTotal">Carga/H Total</label>
             <input type="number" formControlName="chtotal" name="chtotal" class="form-control" id="inputChTotal">
             <small class="error"
-              *ngIf="disciplinaForm.get('chtotal').errors && disciplinaForm.get('chtotal').touched">Carga
-              Horária Total é obrigatória</small>
+              *ngIf="disciplinaForm.get('chtotal').errors && disciplinaForm.get('chtotal').touched">Campo obrigatório.
+            </small>
           </div>
         </div>
 
@@ -50,8 +50,8 @@
             <textarea formControlName="ementa" rows="3" name="ementa" class="form-control" id="inputEmenta">
                             </textarea>
             <small class="error"
-              *ngIf="disciplinaForm.get('ementa').errors && disciplinaForm.get('ementa').touched">Ementa é
-              obrigatória</small>
+              *ngIf="disciplinaForm.get('ementa').errors && disciplinaForm.get('ementa').touched">Campo obrigatório.
+            </small>
           </div>
 
           <div class="form-group col-md-5" [ngClass]="aplicaCssErro('objetivoGeral')">
@@ -60,9 +60,8 @@
               id="inputObjetivoGeral">
                           </textarea>
             <small class="error"
-              *ngIf="disciplinaForm.get('objetivoGeral').errors && disciplinaForm.get('objetivoGeral').touched">Objetivo
-              Geral é
-              obrigatório</small>
+              *ngIf="disciplinaForm.get('objetivoGeral').errors && disciplinaForm.get('objetivoGeral').touched">Campo
+              obrigatório.</small>
           </div>
         </div>
 
@@ -73,9 +72,8 @@
               id="inputObjetivoEspecifico">
                           </textarea>
             <small class="error"
-              *ngIf="disciplinaForm.get('objetivoEspecifico').errors && disciplinaForm.get('objetivoEspecifico').touched">Objetivo
-              Específico é
-              obrigatório</small>
+              *ngIf="disciplinaForm.get('objetivoEspecifico').errors && disciplinaForm.get('objetivoEspecifico').touched">Campo
+              obrigatório.</small>
           </div>
 
           <div class="form-group col-md-5" [ngClass]="aplicaCssErro('habilidadeCompetencias')">
@@ -85,10 +83,9 @@
               class="form-control" id="inputHabilidadeCompetencias">
                             </textarea>
             <small class="error"
-              *ngIf="disciplinaForm.get('habilidadeCompetencias').errors && disciplinaForm.get('habilidadeCompetencias').touched">Habilidade
-              e
-              Competências é
-              obrigatória</small>
+              *ngIf="disciplinaForm.get('habilidadeCompetencias').errors && disciplinaForm.get('habilidadeCompetencias').touched">Campo
+              obrigatório.
+            </small>
           </div>
         </div>
 
@@ -99,9 +96,9 @@
               id="inputConteudoProgramatico">
                             </textarea>
             <small class="error"
-              *ngIf="disciplinaForm.get('conteudoProgramatico').errors && disciplinaForm.get('conteudoProgramatico').touched">Conteúdo
-              Programático é
-              obrigatório</small>
+              *ngIf="disciplinaForm.get('conteudoProgramatico').errors && disciplinaForm.get('conteudoProgramatico').touched">Campo
+              obrigatório.
+            </small>
           </div>
 
           <div class="form-group col-md-5" [ngClass]="aplicaCssErro('procedimentosDidaticos')">
@@ -111,9 +108,9 @@
               class="form-control" id="inputProcedimentosDidaticos">
                               </textarea>
             <small class="error"
-              *ngIf="disciplinaForm.get('procedimentosDidaticos').errors && disciplinaForm.get('procedimentosDidaticos').touched">Procedimentos
-              Didáticos é
-              obrigatório</small>
+              *ngIf="disciplinaForm.get('procedimentosDidaticos').errors && disciplinaForm.get('procedimentosDidaticos').touched">Campo
+              obrigatório.
+            </small>
           </div>
         </div>
 
@@ -123,17 +120,18 @@
             <input formControlName="atividadeIntegrativa" name="atividadeIntegrativa" class="form-control"
               id="inputAtividadeIntegrativa">
             <small class="error"
-              *ngIf="disciplinaForm.get('atividadeIntegrativa').errors && disciplinaForm.get('atividadeIntegrativa').touched">Atividade
-              Integrativa é
-              obrigatório</small>
+              *ngIf="disciplinaForm.get('atividadeIntegrativa').errors && disciplinaForm.get('atividadeIntegrativa').touched">Campo
+              obrigatório.
+            </small>
           </div>
 
           <div class="form-group col-md-5" [ngClass]="aplicaCssErro('primeiraVA')">
             <label for="inputPrimeiraVA">Primeira VA</label>
             <input type="text" formControlName="primeiraVA" name="primeiraVA" class="form-control" id="inputPrimeiraVA">
             <small class="error"
-              *ngIf="disciplinaForm.get('primeiraVA').errors && disciplinaForm.get('primeiraVA').touched">Primeira VA é
-              obrigatória</small>
+              *ngIf="disciplinaForm.get('primeiraVA').errors && disciplinaForm.get('primeiraVA').touched">Campo
+              obrigatório.
+            </small>
           </div>
         </div>
 
@@ -142,16 +140,18 @@
             <label for="inputSegundaVA">Segunda VA</label>
             <input type="text" formControlName="segundaVA" name="segundaVA" class="form-control" id="inputSegundaVA">
             <small class="error"
-              *ngIf="disciplinaForm.get('segundaVA').errors && disciplinaForm.get('segundaVA').touched">Segunda VA é
-              obrigatória</small>
+              *ngIf="disciplinaForm.get('segundaVA').errors && disciplinaForm.get('segundaVA').touched">Campo
+              obrigatório.
+            </small>
           </div>
 
           <div class="form-group col-md-5" [ngClass]="aplicaCssErro('terceiraVA')">
             <label for="inputTerceiraVA">Terceira VA</label>
             <input type="text" formControlName="terceiraVA" name="terceiraVA" class="form-control" id="inputTerceiraVA">
             <small class="error"
-              *ngIf="disciplinaForm.get('terceiraVA').errors && disciplinaForm.get('terceiraVA').touched">Terceira VA é
-              obrigatória</small>
+              *ngIf="disciplinaForm.get('terceiraVA').errors && disciplinaForm.get('terceiraVA').touched">Campo
+              obrigatório.
+            </small>
           </div>
         </div>
 
@@ -162,9 +162,9 @@
               id="inputCibliografiaBasica">
                               </textarea>
             <small class="error"
-              *ngIf="disciplinaForm.get('bibliografiaBasica').errors && disciplinaForm.get('bibliografiaBasica').touched">Bibliografia
-              Básica é
-              obrigatória</small>
+              *ngIf="disciplinaForm.get('bibliografiaBasica').errors && disciplinaForm.get('bibliografiaBasica').touched">Campo
+              obrigatório.
+            </small>
           </div>
 
           <div class="form-group col-md-5" [ngClass]="aplicaCssErro('bibliografiaComplementar')">
@@ -174,9 +174,9 @@
               class="form-control" id="inputBibliografiaComplementar">
                               </textarea>
             <small class="error"
-              *ngIf="disciplinaForm.get('bibliografiaComplementar').errors && disciplinaForm.get('bibliografiaComplementar').touched">Bibliografia
-              Complementar é
-              obrigatória</small>
+              *ngIf="disciplinaForm.get('bibliografiaComplementar').errors && disciplinaForm.get('bibliografiaComplementar').touched">Campo
+              obrigatório.
+            </small>
           </div>
         </div>
 
