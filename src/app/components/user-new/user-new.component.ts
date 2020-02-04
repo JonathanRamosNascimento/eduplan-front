@@ -19,9 +19,10 @@ export class UserNewComponent implements OnInit {
     'nome': ['', [Validators.required]],
     'matricula': ['', [Validators.required]],
     'email': ['', [Validators.required, Validators.email]],
-    'password': ['', [Validators.required]],
+    'password': ['', [Validators.required, Validators.minLength(6)]],
+    'password1': ['', [Validators.required, Validators.minLength(6)]],
     'profile': ['', [Validators.required]]
-  });
+  }, { validators: this.verificaSenha });
 
   user = new User();
   shared: SharedService;
@@ -46,7 +47,9 @@ export class UserNewComponent implements OnInit {
 
   findById(id: string) {
     this.userService.findById(id).subscribe((responseApi: ResponseApi) => {
-      this.usuarioForm.setValue(responseApi.data);
+      const user = { ...responseApi.data, password1: '', password: '' }
+      this.usuarioForm.setValue(user);
+
     }, err => {
       this.showMessage({
         type: 'error',
@@ -68,6 +71,15 @@ export class UserNewComponent implements OnInit {
         text: err['error']['errors'][0]
       });
     });
+  }
+
+  verificaSenha(group: FormGroup) {
+    const senha = group.controls['password'].value;
+    const senha1 = group.controls['password1'].value;
+    if (senha == senha1) {
+      return null;
+    }
+    return { matching: false };
   }
 
   verificaValidTouched(campo) {
