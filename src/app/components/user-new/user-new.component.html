@@ -48,8 +48,7 @@
           <label for="inputPassword1">Confirme a senha</label>
           <input type="password" formControlName="password1" autocomplete="off" name="password1" class="form-control"
             id="inputPassword1" placeholder="Repita a senha">
-          <small class="error" *ngIf="usuarioForm.get('password1').errors && usuarioForm.get('password1').touched">Campo
-            obrigatório.</small>
+          <small class="error" *ngIf="usuarioForm.get('password1').errors && usuarioForm.get('password1').touched">Senhas não são iguais.</small>
         </div>
 
         <div class="col-sm-4" [ngClass]="aplicaCssErro('profile')">

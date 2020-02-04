@@ -28,7 +28,7 @@
 
       </div>
       <div class="box-footer">
-        <a href="#">Esqueçeu a senha?</a>
+        <a [routerLink]="['/user-new']" routerLinkActive="router-link-active" >Registrar</a>
         <button type="submit" [disabled]="!loginForm.valid" class="btn btn-info pull-right">Entrar</button>
       </div>
     </form>

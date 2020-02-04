@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from './../../services/user/user.service';
 import { SharedService } from './../../services/shared.service';
 import { User } from './../../model/user';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -62,7 +62,6 @@ export class UserNewComponent implements OnInit {
     this.message = {};
     this.userService.createOrUpdate(this.usuarioForm.value).subscribe((responseApi: ResponseApi) => {
       this.user = new User();
-      let userRet: User = responseApi.data;
       this.usuarioForm.reset();
       this.router.navigate(['/user-list']);
     }, err => {

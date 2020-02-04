@@ -15,7 +15,7 @@ import { DisciplinaDetailComponent } from './components/disciplina-detail/discip
 export const ROUTES: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'user-new', component: UserNewComponent, canActivate: [AuthGuard] },
+  { path: 'user-new', component: UserNewComponent },
   { path: 'user-new/:id', component: UserNewComponent, canActivate: [AuthGuard] },
   { path: 'user-list', component: UserListComponent, canActivate: [AuthGuard] },
   { path: 'plano-de-ensino-new', component: PlanoDeEnsinoNewComponent, canActivate: [AuthGuard] },
