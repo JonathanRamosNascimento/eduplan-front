@@ -1,7 +1,6 @@
 import { CurrentUser } from './../../../model/currentUser';
 import { SharedService } from './../../../services/shared.service';
 import { UserService } from './../../../services/user/user.service';
-import { User } from './../../../model/user';
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -13,7 +12,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  // user = new User();
   shared: SharedService;
   message: string;
 

@@ -1,5 +1,4 @@
 import { ResponseApi } from './../../model/response-api';
-import { User } from './../../model/user';
 import { SharedService } from './../../services/shared.service';
 import { Router } from '@angular/router';
 import { UserService } from './../../services/user/user.service';

@@ -5,7 +5,7 @@ import { UserService } from './../../services/user/user.service';
 import { SharedService } from './../../services/shared.service';
 import { User } from './../../model/user';
 import { Component, OnInit } from '@angular/core';
-import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-new',

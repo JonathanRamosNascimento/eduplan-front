@@ -2,9 +2,8 @@ import { ResponseApi } from './../../model/response-api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DisciplinaService } from './../../services/disciplina/disciplina.service';
 import { SharedService } from './../../services/shared.service';
-import { Disciplina } from './../../model/disciplina';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-disciplina-new',
