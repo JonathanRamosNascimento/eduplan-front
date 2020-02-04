@@ -5,7 +5,7 @@ import { UserService } from './../../services/user/user.service';
 import { SharedService } from './../../services/shared.service';
 import { User } from './../../model/user';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-new',
@@ -14,8 +14,14 @@ import { NgForm } from '@angular/forms';
 })
 export class UserNewComponent implements OnInit {
 
-  @ViewChild("form", { static: true })
-  form: NgForm;
+  usuarioForm: FormGroup = this.fb.group({
+    'id': [null],
+    'nome': ['', [Validators.required]],
+    'matricula': ['', [Validators.required]],
+    'email': ['', [Validators.required, Validators.email]],
+    'password': ['', [Validators.required]],
+    'profile': ['', [Validators.required]]
+  });
 
   user = new User();
   shared: SharedService;
@@ -26,13 +32,13 @@ export class UserNewComponent implements OnInit {
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) {
     this.shared = SharedService.getInstance();
   }
 
   ngOnInit() {
-    // let id: string = this.route.snapshot.params['id'];
     if (this.id != undefined) {
       this.findById(this.id);
     }
@@ -40,8 +46,7 @@ export class UserNewComponent implements OnInit {
 
   findById(id: string) {
     this.userService.findById(id).subscribe((responseApi: ResponseApi) => {
-      this.user = responseApi.data;
-      this.user.password = '';
+      this.usuarioForm.setValue(responseApi.data);
     }, err => {
       this.showMessage({
         type: 'error',
@@ -52,10 +57,10 @@ export class UserNewComponent implements OnInit {
 
   register() {
     this.message = {};
-    this.userService.createOrUpdate(this.user).subscribe((responseApi: ResponseApi) => {
+    this.userService.createOrUpdate(this.usuarioForm.value).subscribe((responseApi: ResponseApi) => {
       this.user = new User();
       let userRet: User = responseApi.data;
-      this.form.resetForm();
+      this.usuarioForm.reset();
       this.router.navigate(['/user-list']);
     }, err => {
       this.showMessage({
@@ -65,11 +70,21 @@ export class UserNewComponent implements OnInit {
     });
   }
 
-  getFormGroupClass(isInvalid: boolean, isDirty: boolean): {} {
+  verificaValidTouched(campo) {
+    return !this.usuarioForm.get(campo).valid && this.usuarioForm.get(campo).touched
+  }
+
+  verificaEmailInvalido() {
+    let campoEmail = this.usuarioForm.get('email');
+    if (campoEmail.errors) {
+      return campoEmail.errors['email'] && campoEmail.touched;
+    }
+  }
+
+  aplicaCssErro(campo): {} {
     return {
-      'form-group': true,
-      'has-error': isInvalid && isDirty,
-      'has-success': !isInvalid && isDirty
+      'has-error': this.verificaValidTouched(campo),
+      'has-feedback': this.verificaValidTouched(campo)
     };
   }
 

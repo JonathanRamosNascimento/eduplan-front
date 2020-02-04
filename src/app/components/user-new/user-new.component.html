@@ -3,65 +3,64 @@
     <div class="box-header with-border">
       <h3 class="box-title">Novo Usuário</h3>
     </div>
-    <form class="form-horizontal" #form="ngForm" (ngSubmit)="register()" novalidate>
+    <form class="form-horizontal" [formGroup]="usuarioForm" (ngSubmit)="register()" novalidate>
       <div [ngClass]="classCss" role="alert" *ngIf="message">
         <strong>{{ message.text }}</strong>
       </div>
       <div class="box-body">
 
-        <div [ngClass]="getFormGroupClass(nome.invalid,nome.dirty)">
-          <label for="inputNome" class="col-sm-2 control-label">Nome</label>
-          <div class="col-sm-10">
-            <input type="text" autocomplete="off" [(ngModel)]="user.nome" name="nome" class="form-control"
-              id="inputNome" #nome="ngModel" placeholder="Nome completo" nome>
-            <span class="help-block" *ngIf="nome.invalid  && nome.dirty">Nome e obrigatorio </span>
-          </div>
+        <div class="col-sm-10" [ngClass]="aplicaCssErro('nome')">
+          <label for="inputNome">Nome</label>
+          <input type="text" formControlName="nome" autocomplete="off" name="nome" class="form-control" id="inputNome"
+            placeholder="Nome completo">
+          <small class="error" *ngIf="usuarioForm.get('nome').errors && usuarioForm.get('nome').touched">Campo
+            obrigatório.</small>
         </div>
 
-        <div [ngClass]="getFormGroupClass(matricula.invalid,matricula.dirty)">
-          <label for="inputMatricula" class="col-sm-2 control-label">Matricula</label>
-          <div class="col-sm-10">
-            <input type="text" autocomplete="off" [(ngModel)]="user.matricula" name="matricula" class="form-control"
-              id="inputMatricula" #matricula="ngModel" placeholder="Matricula" matricula>
-            <span class="help-block" *ngIf="matricula.invalid  && matricula.dirty">Matricula e obrigatorio </span>
-          </div>
+        <div class="col-sm-10" [ngClass]="aplicaCssErro('matricula')">
+          <label for="inputMatricula">Matricula</label>
+          <input type="text" formControlName="matricula" autocomplete="off" name="matricula" class="form-control"
+            id="inputMatricula" placeholder="Matricula">
+          <small class="error" *ngIf="usuarioForm.get('matricula').errors && usuarioForm.get('matricula').touched">Campo
+            obrigatório.</small>
         </div>
 
-        <div [ngClass]="getFormGroupClass(email.invalid,email.dirty)">
-          <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-          <div class="col-sm-10">
-            <input type="email" autocomplete="off" [(ngModel)]="user.email" name="email" class="form-control"
-              id="inputEmail" #email="ngModel" placeholder="Email" email>
-            <span class="help-block" *ngIf="email.invalid  && email.dirty">Email e obrigatorio </span>
-          </div>
+        <div class="col-sm-10" [ngClass]="aplicaCssErro('email')">
+          <label for="inputEmail">Email</label>
+          <input type="email" formControlName="email" autocomplete="off" name="email" class="form-control"
+            id="inputEmail" placeholder="Email">
+          <small class="error" *ngIf="usuarioForm.get('email').errors && usuarioForm.get('email').touched">Campo
+            obrigatório.</small>
         </div>
-        <div [ngClass]="getFormGroupClass(password.invalid,password.dirty)">
-          <label for="inputPassword" class="col-sm-2 control-label"
+
+        <div class="col-sm-10" [ngClass]="aplicaCssErro('password')">
+          <label for="inputPassword"
             *ngIf="id == undefined; else elseBlock">Senha</label>
           <ng-template #elseBlock>
-            <label for="inputPassword" class="col-sm-2 control-label">Nova Senha</label>
+            <label for="inputPassword">Nova Senha</label>
           </ng-template>
-          <div class="col-sm-10">
-            <input type="password" autocomplete="off" [(ngModel)]="user.password" name="password" class="form-control"
-              id="inputPassword" placeholder="Password" #password="ngModel" required>
-            <span class="help-block" *ngIf="password.invalid && password.dirty">Senha e obrigatoria</span>
-          </div>
+          <input type="password" formControlName="password" autocomplete="off" name="password" class="form-control"
+            id="inputPassword" placeholder="Password">
+          <small class="error" *ngIf="usuarioForm.get('password').errors && usuarioForm.get('password').touched">Campo
+            obrigatório.</small>
         </div>
-        <div [ngClass]="getFormGroupClass(profile.invalid,profile.dirty)">
-          <label for="inputProfile" class="col-sm-2 control-label">Perfil</label>
-          <div class="col-sm-10">
-            <select [(ngModel)]="user.profile" class="form-control select2" name="profile" id="inputProfile"
-              #profile="ngModel" style="width: 100%;" required>
-              <option value="ROLE_DIRETOR">Diretor</option>
-              <option value="ROLE_DOCENTE">Docente</option>
-            </select>
-            <span class="help-block" *ngIf="profile.invalid && profile.dirty">Perfil e obrigatorio</span>
-          </div>
+
+        <div class="col-sm-10" [ngClass]="aplicaCssErro('profile')">
+          <label for="inputProfile">Perfil</label>
+          <select formControlName="profile" class="form-control select2" name="profile" id="inputProfile"
+            style="width: 100%;">
+            <option value="ROLE_DIRETOR">Diretor</option>
+            <option value="ROLE_DOCENTE">Docente</option>
+          </select>
+          <small class="error" *ngIf="usuarioForm.get('profile').errors && usuarioForm.get('profile').touched">Campo
+            obrigatório.</small>
         </div>
+
       </div>
       <div class="box-footer">
-        <button [routerLink]="['/user-list']" routerLinkActive="router-link-active" class="btn btn-danger pull-left">Cancelar</button>
-        <button type="submit" [disabled]="!form.valid" class="btn btn-info pull-right">Salvar</button>
+        <button [routerLink]="['/user-list']" routerLinkActive="router-link-active"
+          class="btn btn-danger pull-left">Cancelar</button>
+        <button type="submit" [disabled]="!usuarioForm.valid" class="btn btn-info pull-right">Salvar</button>
       </div>
     </form>
   </div>
