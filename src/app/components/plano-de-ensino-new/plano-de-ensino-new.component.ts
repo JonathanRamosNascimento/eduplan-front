@@ -3,7 +3,7 @@ import { DisciplinaService } from './../../services/disciplina/disciplina.servic
 import { PlanoDeEnsinoService } from './../../services/plano-de-ensino/plano-de-ensino.service';
 import { ActivatedRoute } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PlanoDeEnsino } from '../../model/plano-de-ensino';
 import { Router } from '@angular/router';
@@ -15,10 +15,30 @@ import { Router } from '@angular/router';
 })
 export class PlanoDeEnsinoNewComponent implements OnInit {
 
-  @ViewChild("form", { static: true })
-  form: NgForm;
+  planoForm: FormGroup = this.fb.group({
+    'id': [null],
+    'disciplina': ['', [Validators.required]],
+    'chtotal': [''],
+    'chteorica': [''],
+    'chpratica': [''],
+    'ementa': [''],
+    'objetivoGeral': [''],
+    'objetivoEspecifico': [''],
+    'habilidadeCompetencias': [''],
+    'conteudoProgramatico': [''],
+    'procedimentosDidaticos': [''],
+    'atividadeIntegrativa': [''],
+    'primeiraVA': [''],
+    'segundaVA': [''],
+    'terceiraVA': [''],
+    'bibliografiaBasica': [''],
+    'bibliografiaComplementar': [''],
+    'turno': ['', [Validators.required]],
+    'periodo': ['', [Validators.required]],
+    'ano': ['', [Validators.required, Validators.minLength(4)]],
+    'semestre': ['', [Validators.required]],
+  });
 
-  planoDeEnsino = new PlanoDeEnsino();
   shared: SharedService;
   message: {};
   classCss: {};
@@ -28,7 +48,8 @@ export class PlanoDeEnsinoNewComponent implements OnInit {
     private planoDeEnsinoService: PlanoDeEnsinoService,
     private route: ActivatedRoute,
     private router: Router,
-    private disciplinaService: DisciplinaService
+    private disciplinaService: DisciplinaService,
+    private fb: FormBuilder
   ) {
     this.shared = SharedService.getInstance();
   }
@@ -43,7 +64,10 @@ export class PlanoDeEnsinoNewComponent implements OnInit {
 
   findById(id: string) {
     this.planoDeEnsinoService.findById(id).subscribe((responseApi: ResponseApi) => {
-      this.planoDeEnsino = responseApi.data;
+      let planoDeEnsino = responseApi.data;
+      delete planoDeEnsino['user'];
+      delete planoDeEnsino['data'];
+      this.planoForm.setValue(planoDeEnsino);
     }, err => {
       this.showMessage({
         type: 'error',
@@ -54,10 +78,8 @@ export class PlanoDeEnsinoNewComponent implements OnInit {
 
   register() {
     this.message = {};
-    this.planoDeEnsinoService.createOrUpdate(this.planoDeEnsino).subscribe((responseApi: ResponseApi) => {
-      this.planoDeEnsino = new PlanoDeEnsino();
-      let plnaoDeEnsino: PlanoDeEnsino = responseApi.data;
-      this.form.resetForm();
+    this.planoDeEnsinoService.createOrUpdate(this.planoForm.value).subscribe((responseApi: ResponseApi) => {
+      this.planoForm.reset();
       this.router.navigate(['/plano-de-ensino-list']);
     }, err => {
       this.showMessage({
@@ -65,6 +87,24 @@ export class PlanoDeEnsinoNewComponent implements OnInit {
         text: err['error']['errors'][0]
       });
     });
+  }
+
+  verificaValidTouched(campo) {
+    return !this.planoForm.get(campo).valid && this.planoForm.get(campo).touched
+  }
+
+  verificaEmailInvalido() {
+    let campoEmail = this.planoForm.get('email');
+    if (campoEmail.errors) {
+      return campoEmail.errors['email'] && campoEmail.touched;
+    }
+  }
+
+  aplicaCssErro(campo): {} {
+    return {
+      'has-error': this.verificaValidTouched(campo),
+      'has-feedback': this.verificaValidTouched(campo)
+    };
   }
 
   getFormGroupClass(isInvalid: boolean, isDirty: boolean): {} {
@@ -93,7 +133,6 @@ export class PlanoDeEnsinoNewComponent implements OnInit {
   findAllDisciplinas() {
     this.disciplinaService.findAll(0, 10).subscribe((responseApi: ResponseApi) => {
       this.listDisciplina = responseApi['data']['content'];
-      console.log(this.listDisciplina);
     }, err => {
       this.showMessage({
         type: 'error',
@@ -103,24 +142,14 @@ export class PlanoDeEnsinoNewComponent implements OnInit {
   }
 
   changeField() {
-    let nomeDaDisciplina = this.form.value.disciplina;
+    let nomeDaDisciplina = this.planoForm.value.disciplina;
+
     let filtroDisciplina = this.listDisciplina.filter(function (disciplina) {
       return disciplina.nome == nomeDaDisciplina;
     });
-    this.planoDeEnsino.chtotal = filtroDisciplina[0].chtotal;
-    this.planoDeEnsino.chteorica = filtroDisciplina[0].chteorica;
-    this.planoDeEnsino.chpratica = filtroDisciplina[0].chpratica;
-    this.planoDeEnsino.ementa = filtroDisciplina[0].ementa;
-    this.planoDeEnsino.objetivoGeral = filtroDisciplina[0].objetivoGeral;
-    this.planoDeEnsino.objetivoEspecifico = filtroDisciplina[0].objetivoEspecifico;
-    this.planoDeEnsino.habilidadeCompetencias = filtroDisciplina[0].habilidadeCompetencias;
-    this.planoDeEnsino.conteudoProgramatico = filtroDisciplina[0].conteudoProgramatico;
-    this.planoDeEnsino.procedimentosDidaticos = filtroDisciplina[0].procedimentosDidaticos;
-    this.planoDeEnsino.atividadeIntegrativa = filtroDisciplina[0].atividadeIntegrativa;
-    this.planoDeEnsino.primeiraVA = filtroDisciplina[0].primeiraVA;
-    this.planoDeEnsino.segundaVA = filtroDisciplina[0].segundaVA;
-    this.planoDeEnsino.terceiraVA = filtroDisciplina[0].terceiraVA;
-    this.planoDeEnsino.bibliografiaBasica = filtroDisciplina[0].bibliografiaBasica;
-    this.planoDeEnsino.bibliografiaComplementar = filtroDisciplina[0].bibliografiaComplementar;
+    let formulario = { ...filtroDisciplina[0], disciplina: filtroDisciplina[0].nome, turno: '', periodo: '', ano: '', semestre: '' };
+    delete formulario['id'];
+    delete formulario['nome'];
+    this.planoForm.setValue({...formulario, id: null});
   }
 }
