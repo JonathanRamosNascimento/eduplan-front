@@ -15,6 +15,8 @@
             (change)="changeField()">
             <option *ngFor="let li of listDisciplina" [ngValue]="li.nome">{{li.nome}}</option>
           </select>
+          <small class="error" *ngIf="planoForm.get('disciplina').errors && planoForm.get('disciplina').touched">Campo
+            obrigatório.</small>
         </div>
 
         <div class="col-sm-4" [ngClass]="aplicaCssErro('turno')">
@@ -24,6 +26,8 @@
             <option value="Vespertino">Vespertino</option>
             <option value="Noturno">Noturno</option>
           </select>
+          <small class="error" *ngIf="planoForm.get('turno').errors && planoForm.get('turno').touched">Campo
+            obrigatório.</small>
         </div>
 
         <div class="col-sm-4" [ngClass]="aplicaCssErro('periodo')">
@@ -40,11 +44,15 @@
             <option value="9">9</option>
             <option value="10">10</option>
           </select>
+          <small class="error" *ngIf="planoForm.get('periodo').errors && planoForm.get('periodo').touched">Campo
+            obrigatório.</small>
         </div>
 
         <div class="col-sm-4" [ngClass]="aplicaCssErro('ano')">
           <label for="inputAno">Ano</label>
           <input formControlName="ano" name="ano" class="form-control" id="inputAno">
+          <small class="error" *ngIf="planoForm.get('ano').errors && planoForm.get('ano').touched">Campo
+            obrigatório.</small>
         </div>
 
         <div class="col-sm-4" [ngClass]="aplicaCssErro('semestre')">
@@ -53,6 +61,8 @@
             <option value="1">1</option>
             <option value="2">2</option>
           </select>
+          <small class="error" *ngIf="planoForm.get('semestre').errors && planoForm.get('semestre').touched">Campo
+            obrigatório.</small>
         </div>
 
       </div>
