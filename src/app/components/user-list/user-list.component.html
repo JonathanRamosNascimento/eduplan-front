@@ -20,8 +20,8 @@
             <td>{{user.nome}}</td>
             <td>{{user.email}}</td>
             <td>{{user.profile}}</td>
-            <td><button class="btn btn-primary" (click)="edit(user.id)">Editar</button></td>
-            <td><button class="btn btn-danger" (click)="delete(user.id, user.nome)">Apagar</button></td>
+            <td><button (click)="edit(user.id)"><i class="fa fa-edit"></i></button></td>
+            <td><button (click)="delete(user.id, user.nome)"><i class="fa fa-trash"></i></button></td>
           </tr>
         </table>
       </div>

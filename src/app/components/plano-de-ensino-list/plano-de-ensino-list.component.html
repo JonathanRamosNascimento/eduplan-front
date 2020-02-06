@@ -27,12 +27,12 @@
                         <td>{{pe.ano}}/{{pe.semestre}}</td>
                         <!---td><button class="btn btn-secondary">Imprimir</button></td>-->
                         <td>
-                            <button class="btn btn-primary" (click)="edit(pe.id)">Editar</button>
+                            <button (click)="edit(pe.id)"><i class="fa fa-edit"></i></button>
                         </td>
                         <td>
-                            <button class="btn btn-danger" (click)="delete(pe.id, pe.disciplina)">Apagar</button>
+                            <button (click)="delete(pe.id, pe.disciplina)"><i class="fa fa-trash"></i></button>
                         </td>
-                        <td><button class="btn btn-success" (click)="detail(pe.id)">Detalhes</button></td>
+                        <td><button (click)="detail(pe.id)"><i class="fa fa-file"></i></button></td>
                     </tr>
                 </table>
             </div>

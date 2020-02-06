@@ -21,14 +21,25 @@
             <td>{{di.nome}}</td>
             <td>{{di.chtotal}}</td>
             <td>
-              <button class="btn btn-primary" (click)="edit(di.id)">Editar</button>
+              <button (click)="edit(di.id)"><i class="fa fa-edit"></i></button>
             </td>
             <td>
-              <button class="btn btn-danger" (click)="delete(di.id, di.nome)">Apagar</button>
+              <button (click)="delete(di.id, di.nome)"><i class="fa fa-trash"></i></button>
             </td>
-            <td><button class="btn btn-success" (click)="detail(di.id)">Detalhes</button></td>
+            <td>
+              <button (click)="detail(di.id)"><i class="fa fa-file"></i></button>
+            </td>
           </tr>
         </table>
+      </div>
+      <div class="box-footer clearfix">
+        <ul class="pagination pagination-sm no-margin pull-right">
+          <li><a href="" (click)="setPreviousPage($event)">&laquo;</a></li>
+          <li *ngFor="let p of pages; let i=index">
+            <a [ngClass]="{'pagination-focus':i==page}" href="" (click)="setPage(i,$event)">{{i+1}}</a>
+          </li>
+          <li><a href="" (click)="setNextPage($event)">&raquo;</a></li>
+        </ul>
       </div>
     </div>
   </div>
