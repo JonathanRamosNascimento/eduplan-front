@@ -11,7 +11,7 @@
             <div class="box-body">
                 <table class="table table-bordered">
                     <tr>
-                        <th *ngIf="shared.user.profile == 'DIRETOR'">Docente</th>
+                        <th *ngIf="user.profile == 'ROLE_DIRETOR'">Docente</th>
                         <th>Disciplina</th>
                         <th>Ano/Semestre</th>
                         <th style="width: 10px">&nbsp;</th>
@@ -20,7 +20,7 @@
                         <!---  <th style="width: 10px">&nbsp;</th>-->
                     </tr>
                     <tr *ngFor="let pe of listPlanoDeEnsino">
-                        <td *ngIf="shared.user.profile == 'DIRETOR'">
+                        <td *ngIf="user.profile == 'ROLE_DIRETOR'">
                             {{pe.user.nome}}
                         </td>
                         <td>{{pe.disciplina}}</td>

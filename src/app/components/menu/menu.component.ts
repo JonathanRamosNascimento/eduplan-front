@@ -1,4 +1,4 @@
-import { SharedService } from './../../services/shared.service';
+import { User } from './../../model/user';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,13 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  shared: SharedService;
+  public user: User;
 
   constructor() {
-    this.shared = SharedService.getInstance();
   }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
 
 }

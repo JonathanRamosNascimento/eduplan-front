@@ -1,31 +1,13 @@
 import { UserService } from './user/user.service';
-import { Injectable, EventEmitter } from '@angular/core';
-import { User } from '../model/user';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class SharedService {
 
-  public static instance: SharedService = null;
-  user: User;
-  token: string;
-  showTemplate = new EventEmitter<boolean>();
+  public evento = new BehaviorSubject<any>(false);
 
   constructor() {
-    return SharedService.instance = SharedService.instance || this;
-  }
-
-  public static getInstance() {
-    if (this.instance == null) {
-      this.instance = new SharedService();
-    }
-    return this.instance;
-  }
-
-  isLoggedIn(): boolean {
-    if (this.user == null) {
-      return false;
-    }
-    return this.user.email != null;
   }
 
 }

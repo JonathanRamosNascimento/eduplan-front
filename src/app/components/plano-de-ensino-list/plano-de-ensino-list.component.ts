@@ -1,6 +1,6 @@
+import { User } from './../../model/user';
 import { PlanoDeEnsinoService } from './../../services/plano-de-ensino/plano-de-ensino.service';
 import { ResponseApi } from '../../model/response-api';
-import { SharedService } from '../../services/shared.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from '../../dialog.service';
@@ -17,20 +17,20 @@ export class PlanoDeEnsinoListComponent implements OnInit {
   page: number = 0;
   count: number = 12;
   pages: Array<number>;
-  shared: SharedService;
   message: {};
   classCss: {};
   listPlanoDeEnsino = [];
   planoDeEnsinoFilter = new PlanoDeEnsino();
+  public user: User;
 
   constructor(
     private dialogService: DialogService,
     private planoDeEnsinoService: PlanoDeEnsinoService,
     private router: Router) {
-    this.shared = SharedService.getInstance();
   }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user'));
     this.findAll(this.page, this.count);
   }
 

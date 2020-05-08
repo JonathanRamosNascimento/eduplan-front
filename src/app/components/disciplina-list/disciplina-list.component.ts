@@ -2,7 +2,6 @@ import { ResponseApi } from './../../model/response-api';
 import { Router } from '@angular/router';
 import { DisciplinaService } from './../../services/disciplina/disciplina.service';
 import { DialogService } from './../../dialog.service';
-import { SharedService } from './../../services/shared.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -15,7 +14,6 @@ export class DisciplinaListComponent implements OnInit {
   page: number = 0;
   count: number = 12;
   pages: Array<number>;
-  shared: SharedService;
   message: {};
   classCss: {};
   listDisciplina = [];

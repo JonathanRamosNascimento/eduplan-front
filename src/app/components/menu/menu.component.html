@@ -2,7 +2,7 @@
   <section class="sidebar">
     <ul class="sidebar-menu" data-widget="tree">
 
-      <li class="treeview" *ngIf="shared.user.profile == 'DIRETOR'">
+      <li class="treeview" *ngIf="user.profile === 'ROLE_DIRETOR'">
         <a href="#">
           <i class="fa fa-book"></i> <span>Disciplinas</span>
           <span class="pull-right-container">
@@ -28,7 +28,7 @@
         </ul>
       </li>
 
-      <li class="treeview" *ngIf="shared.user.profile == 'DIRETOR'">
+      <li class="treeview" *ngIf="user.profile === 'ROLE_DIRETOR'">
         <a href="#">
           <i class="fa fa-user"></i> <span>Usuários</span>
           <span class="pull-right-container">

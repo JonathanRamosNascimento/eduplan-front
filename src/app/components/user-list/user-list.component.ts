@@ -1,5 +1,4 @@
 import { ResponseApi } from './../../model/response-api';
-import { SharedService } from './../../services/shared.service';
 import { Router } from '@angular/router';
 import { UserService } from './../../services/user/user.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,7 +14,6 @@ export class UserListComponent implements OnInit {
   page: number = 0;
   count: number = 12;
   pages: Array<number>;
-  shared: SharedService;
   message: {};
   classCss: {};
   listUser = [];
@@ -24,7 +22,6 @@ export class UserListComponent implements OnInit {
     private dialogService: DialogService,
     private userService: UserService,
     private router: Router) {
-    this.shared = SharedService.getInstance();
   }
 
   ngOnInit() {

@@ -1,23 +1,27 @@
-import { UserService } from './../../services/user/user.service';
+import { SharedService } from './../../services/shared.service';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
-import { Route, Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanLoad } from '@angular/router';
-import { SharedService } from '../../services/shared.service';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  public shared: SharedService;
+  private sharedEvento: boolean;
 
-  constructor(private userService: UserService,
-    private router: Router) {
-    this.shared = SharedService.getInstance();
+  constructor(
+    private sharedService: SharedService,
+    private router: Router
+  ) {
+    this.sharedService.evento.subscribe(
+      (res) => this.sharedEvento = res
+    )
   }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | boolean {
-    if (this.shared.isLoggedIn()) {
+    console.log(this.sharedEvento);
+    if (this.sharedEvento) {
       return true;
     }
     this.router.navigate(['/login']);

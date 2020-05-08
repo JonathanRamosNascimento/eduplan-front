@@ -1,7 +1,6 @@
 import { ResponseApi } from './../../model/response-api';
 import { ActivatedRoute } from '@angular/router';
 import { DisciplinaService } from './../../services/disciplina/disciplina.service';
-import { SharedService } from './../../services/shared.service';
 import { Disciplina } from './../../model/disciplina';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -17,7 +16,6 @@ export class DisciplinaDetailComponent implements OnInit {
   form: NgForm;
 
   disciplina = new Disciplina();
-  shared: SharedService;
   message: {};
   classCss: {};
 
@@ -25,7 +23,6 @@ export class DisciplinaDetailComponent implements OnInit {
     private disciplinaService: DisciplinaService,
     private route: ActivatedRoute,
   ) {
-    this.shared = SharedService.getInstance();
   }
 
   ngOnInit() {

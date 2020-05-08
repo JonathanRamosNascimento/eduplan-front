@@ -11,8 +11,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  shared: SharedService;
   message: string;
 
   loginForm: FormGroup = this.fb.group({
@@ -23,9 +21,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private sharedService: SharedService
   ) {
-    this.shared = SharedService.getInstance();
   }
 
   ngOnInit() {
@@ -35,15 +33,14 @@ export class LoginComponent implements OnInit {
   login() {
     this.message = '';
     this.userService.login(this.loginForm.value).subscribe((userAuthentication: CurrentUser) => {
-      this.shared.token = userAuthentication.token;
-      this.shared.user = userAuthentication.user;
-      this.shared.user.profile = this.shared.user.profile.substring(5);
-      this.shared.showTemplate.emit(true);
+      this.sharedService.evento.next(true);
+      localStorage.setItem('token', userAuthentication.token);
+      localStorage.setItem('user', JSON.stringify(userAuthentication.user));
       this.router.navigate(['/']);
     }, err => {
-      this.shared.token = null;
-      this.shared.user = null;
-      this.shared.showTemplate.emit(false);
+      this.sharedService.evento.next(false);
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
       this.message = 'Erro ';
     });
   }

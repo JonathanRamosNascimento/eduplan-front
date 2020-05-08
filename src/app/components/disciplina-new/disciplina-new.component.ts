@@ -1,7 +1,6 @@
 import { ResponseApi } from './../../model/response-api';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DisciplinaService } from './../../services/disciplina/disciplina.service';
-import { SharedService } from './../../services/shared.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -31,7 +30,6 @@ export class DisciplinaNewComponent implements OnInit {
     'bibliografiaBasica': ['', [Validators.required]],
     'bibliografiaComplementar': ['', [Validators.required]],
   });
-  shared: SharedService;
   message: {};
   classCss: {};
 
@@ -41,7 +39,6 @@ export class DisciplinaNewComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder
   ) {
-    this.shared = SharedService.getInstance();
   }
 
   ngOnInit() {

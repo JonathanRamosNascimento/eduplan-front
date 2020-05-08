@@ -1,7 +1,6 @@
 import { PlanoDeEnsinoService } from './../../services/plano-de-ensino/plano-de-ensino.service';
 import { ResponseApi } from '../../model/response-api';
 import { ActivatedRoute } from '@angular/router';
-import { SharedService } from '../../services/shared.service';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { PlanoDeEnsino } from '../../model/plano-de-ensino';
@@ -21,7 +20,6 @@ export class PlanoDeEnsinoDetailComponent implements OnInit {
   form: NgForm;
 
   planoDeEnsino = new PlanoDeEnsino();
-  shared: SharedService;
   message: {};
   classCss: {};
 
@@ -29,7 +27,6 @@ export class PlanoDeEnsinoDetailComponent implements OnInit {
     private planoDeEnsinoService: PlanoDeEnsinoService,
     private route: ActivatedRoute
   ) {
-    this.shared = SharedService.getInstance();
   }
 
   ngOnInit() {

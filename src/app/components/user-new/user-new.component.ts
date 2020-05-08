@@ -2,7 +2,6 @@ import { Router } from '@angular/router';
 import { ResponseApi } from './../../model/response-api';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from './../../services/user/user.service';
-import { SharedService } from './../../services/shared.service';
 import { User } from './../../model/user';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -25,7 +24,6 @@ export class UserNewComponent implements OnInit {
   }, { validators: this.verificaSenha });
 
   user = new User();
-  shared: SharedService;
   message: {};
   classCss: {};
   id: string = this.route.snapshot.params['id'];
@@ -36,7 +34,6 @@ export class UserNewComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder
   ) {
-    this.shared = SharedService.getInstance();
   }
 
   ngOnInit() {

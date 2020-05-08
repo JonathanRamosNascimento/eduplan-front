@@ -2,10 +2,8 @@ import { ResponseApi } from './../../model/response-api';
 import { DisciplinaService } from './../../services/disciplina/disciplina.service';
 import { PlanoDeEnsinoService } from './../../services/plano-de-ensino/plano-de-ensino.service';
 import { ActivatedRoute } from '@angular/router';
-import { SharedService } from '../../services/shared.service';
-import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { PlanoDeEnsino } from '../../model/plano-de-ensino';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -39,7 +37,6 @@ export class PlanoDeEnsinoNewComponent implements OnInit {
     'semestre': ['', [Validators.required]],
   });
 
-  shared: SharedService;
   message: {};
   classCss: {};
   listDisciplina = [];
@@ -51,7 +48,6 @@ export class PlanoDeEnsinoNewComponent implements OnInit {
     private disciplinaService: DisciplinaService,
     private fb: FormBuilder
   ) {
-    this.shared = SharedService.getInstance();
   }
 
   ngOnInit() {
